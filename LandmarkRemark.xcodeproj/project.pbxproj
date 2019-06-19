@@ -17,6 +17,7 @@
 		CBF97D0622B9F33400032EC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBF97D0422B9F33400032EC8 /* LaunchScreen.storyboard */; };
 		CBF97D1122B9F33400032EC8 /* LandmarkRemarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF97D1022B9F33400032EC8 /* LandmarkRemarkTests.swift */; };
 		CBF97D1C22B9F33400032EC8 /* LandmarkRemarkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF97D1B22B9F33400032EC8 /* LandmarkRemarkUITests.swift */; };
+		CBF97D2E22B9FAD800032EC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBF97D2D22B9FAD800032EC8 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		CBF97D1722B9F33400032EC8 /* LandmarkRemarkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LandmarkRemarkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF97D1B22B9F33400032EC8 /* LandmarkRemarkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkRemarkUITests.swift; sourceTree = "<group>"; };
 		CBF97D1D22B9F33400032EC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBF97D2D22B9FAD800032EC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D355050F611960C17566DFC0 /* Pods-LandmarkRemark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandmarkRemark.release.xcconfig"; path = "Target Support Files/Pods-LandmarkRemark/Pods-LandmarkRemark.release.xcconfig"; sourceTree = "<group>"; };
 		E3E863395594A0191DD4E994 /* Pods-LandmarkRemarkUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandmarkRemarkUITests.debug.xcconfig"; path = "Target Support Files/Pods-LandmarkRemarkUITests/Pods-LandmarkRemarkUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F2D7889D896539DA4F9AD926 /* Pods_LandmarkRemarkUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LandmarkRemarkUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,7 @@
 				CBF97D0222B9F33400032EC8 /* Assets.xcassets */,
 				CBF97D0422B9F33400032EC8 /* LaunchScreen.storyboard */,
 				CBF97D0722B9F33400032EC8 /* Info.plist */,
+				CBF97D2D22B9FAD800032EC8 /* GoogleService-Info.plist */,
 			);
 			path = LandmarkRemark;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				CBF97CF522B9F33300032EC8 /* Frameworks */,
 				CBF97CF622B9F33300032EC8 /* Resources */,
 				CBF97D2922B9F4F900032EC8 /* SwiftLint to guard style */,
+				D5811F896366A6B0DE350820 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -274,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBF97D0622B9F33400032EC8 /* LaunchScreen.storyboard in Resources */,
+				CBF97D2E22B9FAD800032EC8 /* GoogleService-Info.plist in Resources */,
 				CBF97D0322B9F33400032EC8 /* Assets.xcassets in Resources */,
 				CBF97D0122B9F33300032EC8 /* Main.storyboard in Resources */,
 			);
@@ -356,6 +361,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5811F896366A6B0DE350820 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LandmarkRemark/Pods-LandmarkRemark-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LandmarkRemark/Pods-LandmarkRemark-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ED645F4D5765B636489F6C5C /* [CP] Check Pods Manifest.lock */ = {
