@@ -20,7 +20,10 @@ target 'LandmarkRemark' do
   end
 
   target 'LandmarkRemarkUITests' do
-    inherit! :search_paths
+    ## WARNING: Make sure you comment out inherit! :search_paths or face this
+    ## deadly error
+    ## see https://github.com/firebase/firebase-ios-sdk/issues/2294
+    ## # inherit! :search_paths  # Make sure to comment out this in UITest target!
     # Pods for testing
   end
 
