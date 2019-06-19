@@ -1,0 +1,19 @@
+excluded:
+- Pods/
+
+disabled_rules:
+- trailing_whitespace
+- line_length
+
+vertical_whitespace:
+  max_empty_lines: 2
+
+type_name:
+  min_length: 3
+  max_length: 30
+
+identifier_name:
+  min_length: 2
+  max_length: 30
+#  excluded: # Consent to ignore specific variable. eg: LayoutConstraints
+#  - thumbnailLeadingSpaceConstraint
