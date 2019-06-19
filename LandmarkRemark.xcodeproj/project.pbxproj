@@ -18,6 +18,8 @@
 		CBF97D1122B9F33400032EC8 /* LandmarkRemarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF97D1022B9F33400032EC8 /* LandmarkRemarkTests.swift */; };
 		CBF97D1C22B9F33400032EC8 /* LandmarkRemarkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF97D1B22B9F33400032EC8 /* LandmarkRemarkUITests.swift */; };
 		CBF97D2E22B9FAD800032EC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBF97D2D22B9FAD800032EC8 /* GoogleService-Info.plist */; };
+		CBF97D3022B9FDE200032EC8 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF97D2F22B9FDE200032EC8 /* UserTests.swift */; };
+		CBF97D3322B9FE9A00032EC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF97D3222B9FE9A00032EC8 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		CBF97D1B22B9F33400032EC8 /* LandmarkRemarkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkRemarkUITests.swift; sourceTree = "<group>"; };
 		CBF97D1D22B9F33400032EC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBF97D2D22B9FAD800032EC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CBF97D2F22B9FDE200032EC8 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
+		CBF97D3222B9FE9A00032EC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D355050F611960C17566DFC0 /* Pods-LandmarkRemark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandmarkRemark.release.xcconfig"; path = "Target Support Files/Pods-LandmarkRemark/Pods-LandmarkRemark.release.xcconfig"; sourceTree = "<group>"; };
 		E3E863395594A0191DD4E994 /* Pods-LandmarkRemarkUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LandmarkRemarkUITests.debug.xcconfig"; path = "Target Support Files/Pods-LandmarkRemarkUITests/Pods-LandmarkRemarkUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F2D7889D896539DA4F9AD926 /* Pods_LandmarkRemarkUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LandmarkRemarkUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +143,7 @@
 		CBF97CFA22B9F33300032EC8 /* LandmarkRemark */ = {
 			isa = PBXGroup;
 			children = (
+				CBF97D3122B9FE8E00032EC8 /* Models */,
 				CBF97CFB22B9F33300032EC8 /* AppDelegate.swift */,
 				CBF97CFD22B9F33300032EC8 /* ViewController.swift */,
 				CBF97CFF22B9F33300032EC8 /* Main.storyboard */,
@@ -155,6 +160,7 @@
 			children = (
 				CBF97D1022B9F33400032EC8 /* LandmarkRemarkTests.swift */,
 				CBF97D1222B9F33400032EC8 /* Info.plist */,
+				CBF97D2F22B9FDE200032EC8 /* UserTests.swift */,
 			);
 			path = LandmarkRemarkTests;
 			sourceTree = "<group>";
@@ -166,6 +172,14 @@
 				CBF97D1D22B9F33400032EC8 /* Info.plist */,
 			);
 			path = LandmarkRemarkUITests;
+			sourceTree = "<group>";
+		};
+		CBF97D3122B9FE8E00032EC8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CBF97D3222B9FE9A00032EC8 /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,6 +436,7 @@
 			files = (
 				CBF97CFE22B9F33300032EC8 /* ViewController.swift in Sources */,
 				CBF97CFC22B9F33300032EC8 /* AppDelegate.swift in Sources */,
+				CBF97D3322B9FE9A00032EC8 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBF97D3022B9FDE200032EC8 /* UserTests.swift in Sources */,
 				CBF97D1122B9F33400032EC8 /* LandmarkRemarkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
