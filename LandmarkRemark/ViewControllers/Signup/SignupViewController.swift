@@ -16,6 +16,8 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     
+    var signupCompletionBlock: (() -> Void)?
+    let viewModel = SignupViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,5 +39,6 @@ extension SignupViewController {
     }
     
     @IBAction func submitButtonTouchUpInside(_ sender: UIButton) {
+
     }
 }

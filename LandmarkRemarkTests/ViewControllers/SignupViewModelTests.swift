@@ -57,3 +57,19 @@ class SignupViewModelTests: BaseTestCase {
     }
 
 }
+
+
+// MARK: - 
+extension UITextField {
+    
+    func markInvalid() {
+        layer.borderWidth = 1.0
+        layer.cornerRadius = 3.0
+        layer.borderColor = UIColor.red.cgColor
+    }
+    func markValid() {
+        layer.borderWidth = 0
+        layer.cornerRadius = 3.0
+        layer.borderColor = UIColor.black.cgColor
+    }
+}
