@@ -20,7 +20,25 @@ class LoginViewModelTests: XCTestCase {
         vm = nil
     }
     
-    func testPerformLogin() {
+    func testPerformLoginWithAuthCredential() {
+        let expectation = XCTestExpectation(description: "Waiting for login to return.")
+        let email = "testuser1@example.com"
+        let password = "Th1s1sAWeakPassw0rd"
+        let auth = EmailAuthProvider.credential(withEmail: email, password: password)
+        var resultingUser: Firebase.User!
+        vm.performLogin(withCredential: auth) { user, error in
+            XCTAssertNil(error)
+            XCTAssertNotNil(user)
+            resultingUser = user
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 15.0)
+        XCTAssertNotNil(resultingUser.uid)
+        XCTAssertNotNil(resultingUser.email)
+    }
+    
+    func testPerformLoginWithEmailAndPassword() {
         let expectation = XCTestExpectation(description: "Waiting for login to return.")
         let email = "testuser1@example.com"
         let password = "Th1s1sAWeakPassw0rd"
