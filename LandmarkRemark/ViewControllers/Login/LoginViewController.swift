@@ -26,4 +26,14 @@ class LoginViewController: UIViewController {
         super.viewDidLayoutSubviews()
         loginButton.layer.cornerRadius = 5.0
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if let navController = segue.destination as? UINavigationController, let vc = navController.viewControllers.first as? SignupViewController {
+            vc.signupCompletionBlock = { [weak self] user, auth in
+                // TODO: Perform login with AuthCredential.
+            }
+        }
+    }
 }

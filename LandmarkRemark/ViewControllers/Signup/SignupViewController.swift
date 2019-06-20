@@ -17,7 +17,7 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     
-    var signupCompletionBlock: ((Firebase.User?) -> Void)?
+    var signupCompletionBlock: ((Firebase.User?, Firebase.AuthCredential) -> Void)?
     let viewModel = SignupViewModel()
     
     override func viewDidLoad() {
@@ -67,7 +67,8 @@ extension SignupViewController {
                 return
             }
             if let user = user, let completion = self.signupCompletionBlock {
-                completion(user)
+                let auth = EmailAuthProvider.credential(withEmail: email, password: password)
+                completion(user, auth)
             }
         }
     }

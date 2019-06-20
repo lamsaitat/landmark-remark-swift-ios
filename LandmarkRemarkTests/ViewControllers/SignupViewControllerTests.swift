@@ -73,8 +73,9 @@ class SignupViewControllerTests: BaseTestCase {
             self.vc.passwordTextField.text = password
             self.vc.usernameTextField.text = username
             self.vc.submitButtonTouchUpInside(self.vc.submitButton)
-            self.vc.signupCompletionBlock = { user in
+            self.vc.signupCompletionBlock = { user, auth in
                 XCTAssertNotNil(user)
+                XCTAssertNotNil(auth)
                 resultingUser = user
                 expectation.fulfill()
             }
