@@ -15,6 +15,7 @@ class LoginViewControllerTests: XCTestCase {
     
     override func setUp() {
         vc = createViewController()
+        UIApplication.shared.keyWindow?.rootViewController = vc
         vc.loadViewIfNeeded()
     }
 
@@ -29,9 +30,27 @@ class LoginViewControllerTests: XCTestCase {
         XCTAssertNotNil(vc.passwordTextField)
         XCTAssertNotNil(vc.loginButton)
         XCTAssertNotNil(vc.signupButton)
+        
+        
     }
 
-    
+    /**
+     Test signup button tap should modally present the sign up view controller.
+     */
+    func testSignupButtonTap() {
+        let expectation = XCTestExpectation(description: "Waiting for modal presentation.")
+        vc.signupButton.sendActions(for: .touchUpInside)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 6.0)
+        guard let navController = vc.presentedViewController as? UINavigationController else {
+            return XCTFail("Expected LoginViewController to present a UINavigationController instance.")
+        }
+        XCTAssertNotNil(navController.viewControllers.first as? SignupViewController)
+    }
 }
 
 
