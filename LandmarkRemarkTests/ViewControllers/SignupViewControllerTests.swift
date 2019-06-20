@@ -134,4 +134,23 @@ class SignupViewControllerTests: BaseTestCase {
         XCTAssertEqual(vc.passwordTextField.layer.borderWidth, 1.0, "Empty passwordTextField should highlight in red.")
         XCTAssertEqual(vc.passwordTextField.layer.borderColor, UIColor.red.cgColor, "Empty passwordTextField should highlight in red.")
     }
+    
+    func testPresentSignupErrorAlert() {
+        guard let vc = vc else {
+            return XCTFail("SignupViewController instance not available for testing.")
+        }
+        UIApplication.shared.keyWindow?.rootViewController = vc.navigationController
+        let error = NSError(domain: Bundle.main.bundleIdentifier!, code: 500, userInfo: [
+            NSLocalizedDescriptionKey: "This is an error"
+        ])
+        let expectation = XCTestExpectation(description: "Wait for alert to present.")
+        let alert = vc.presentSignupErrorAlert(with: error)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10)
+        XCTAssertEqual(alert.presentingViewController, vc.navigationController)
+        XCTAssertEqual(alert.title, "Sorry")
+        XCTAssertEqual(alert.message, "Unable to complete sign up.\nError: This is an error")
+    }
 }

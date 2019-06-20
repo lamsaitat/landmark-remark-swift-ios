@@ -61,12 +61,26 @@ extension SignupViewController {
                 return
             }
             if let error = error {
-                debugPrint("Error with signup: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    _ = self.presentSignupErrorAlert(with: error)
+                }
                 return
             }
             if let user = user, let completion = self.signupCompletionBlock {
                 completion(user)
             }
         }
+    }
+}
+
+
+// MARK: - Private method
+
+extension SignupViewController {
+    func presentSignupErrorAlert(with error: Error) -> UIAlertController {
+        let alert = UIAlertController(title: "Sorry", message: "Unable to complete sign up.\nError: \(error.localizedDescription)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+        present(alert, animated: true, completion: nil)
+        return alert
     }
 }
