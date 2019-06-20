@@ -36,7 +36,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="gwV-Ea-tuf"/>
                     </view>
-                    <navigationItem key="navigationItem" id="TUc-Rl-ZfK"/>
+                    <navigationItem key="navigationItem" id="TUc-Rl-ZfK">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="LnV-e5-KUU">
+                            <connections>
+                                <action selector="cancelButtonItemTapped:" destination="YGm-x1-peg" id="FuP-49-369"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButtonItem" destination="LnV-e5-KUU" id="UYu-MI-18J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJZ-87-HnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

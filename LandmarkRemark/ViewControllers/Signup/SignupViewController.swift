@@ -9,14 +9,14 @@
 import UIKit
 
 class SignupViewController: UIViewController {
-
+    @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -27,4 +27,12 @@ class SignupViewController: UIViewController {
     }
     */
 
+}
+
+
+// MARK: - IBActions
+extension SignupViewController {
+    @IBAction func cancelButtonItemTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
