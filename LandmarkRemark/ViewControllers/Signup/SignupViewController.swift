@@ -9,7 +9,13 @@
 import UIKit
 
 class SignupViewController: UIViewController {
+    
     @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,16 +23,10 @@ class SignupViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        submitButton.layer.cornerRadius = 5.0
     }
-    */
-
 }
 
 
@@ -34,5 +34,8 @@ class SignupViewController: UIViewController {
 extension SignupViewController {
     @IBAction func cancelButtonItemTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func submitButtonTouchUpInside(_ sender: UIButton) {
     }
 }

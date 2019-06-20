@@ -21,4 +21,9 @@ class LoginViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        loginButton.layer.cornerRadius = 5.0
+    }
 }
