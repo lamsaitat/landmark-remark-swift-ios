@@ -10,11 +10,11 @@ import XCTest
 @testable import LandmarkRemark
 @testable import Firebase
 
-class LoginViewControllerTests: XCTestCase {
+class LoginViewControllerTests: BaseTestCase {
     var vc: LoginViewController!
     
     override func setUp() {
-        vc = createViewController()
+        vc = createLoginViewController()
         UIApplication.shared.keyWindow?.rootViewController = vc
         vc.loadViewIfNeeded()
     }
@@ -53,12 +53,3 @@ class LoginViewControllerTests: XCTestCase {
     }
 }
 
-
-extension LoginViewControllerTests {
-    func createViewController() -> LoginViewController {
-        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {
-            fatalError("Unable to instantiate LoginViewController from storyboard.")
-        }
-        return vc
-    }
-}

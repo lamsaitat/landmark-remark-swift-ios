@@ -9,11 +9,11 @@
 import XCTest
 @testable import LandmarkRemark
 
-class SignupViewControllerTests: XCTestCase {
+class SignupViewControllerTests: BaseTestCase {
     var vc: SignupViewController!
     
     override func setUp() {
-        vc = createViewController()
+        vc = createSignupViewController()
         vc.loadViewIfNeeded()
     }
 
@@ -25,15 +25,5 @@ class SignupViewControllerTests: XCTestCase {
         XCTAssertNotNil(vc)
         XCTAssertNotNil(vc.navigationController)
         XCTAssertNotNil(vc.view)
-    }
-}
-
-
-extension SignupViewControllerTests {
-    func createViewController() -> SignupViewController {
-        guard let navController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignupNavController") as? UINavigationController, let vc = navController.viewControllers.first as? SignupViewController else {
-            fatalError("Unable to create SignupNavController from storyboard.")
-        }
-        return vc
     }
 }
