@@ -52,4 +52,3 @@ class LoginViewControllerTests: BaseTestCase {
         XCTAssertNotNil(navController.viewControllers.first as? SignupViewController)
     }
 }
-
