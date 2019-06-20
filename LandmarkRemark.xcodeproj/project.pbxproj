@@ -12,6 +12,8 @@
 		AE3421FC178C37812EE4A058 /* Pods_LandmarkRemarkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D7889D896539DA4F9AD926 /* Pods_LandmarkRemarkUITests.framework */; };
 		CB1B723C22BB086100B8542A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1B723B22BB086100B8542A /* LoginViewModel.swift */; };
 		CB1B723E22BB087B00B8542A /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1B723D22BB087B00B8542A /* LoginViewModelTests.swift */; };
+		CB1B724422BB2DAA00B8542A /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1B724322BB2DAA00B8542A /* SignupViewController.swift */; };
+		CB1B724622BB2E5300B8542A /* SignupViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1B724522BB2E5300B8542A /* SignupViewControllerTests.swift */; };
 		CBF97CFC22B9F33300032EC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF97CFB22B9F33300032EC8 /* AppDelegate.swift */; };
 		CBF97D0122B9F33300032EC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBF97CFF22B9F33300032EC8 /* Main.storyboard */; };
 		CBF97D0322B9F33400032EC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF97D0222B9F33400032EC8 /* Assets.xcassets */; };
@@ -54,6 +56,8 @@
 		8DA2A5DF8D2551A95567D69F /* Pods_LandmarkRemarkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LandmarkRemarkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1B723B22BB086100B8542A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CB1B723D22BB087B00B8542A /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		CB1B724322BB2DAA00B8542A /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		CB1B724522BB2E5300B8542A /* SignupViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewControllerTests.swift; sourceTree = "<group>"; };
 		CBF97CF822B9F33300032EC8 /* LandmarkRemark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LandmarkRemark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF97CFB22B9F33300032EC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBF97D0022B9F33300032EC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -132,6 +136,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CB1B723F22BB2B4200B8542A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CBF97D3522BA00BE00032EC8 /* LoginViewController.swift */,
+				CB1B723B22BB086100B8542A /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		CB1B724022BB2B4D00B8542A /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				CB1B724322BB2DAA00B8542A /* SignupViewController.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
 		CBF97CEF22B9F33300032EC8 = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +197,7 @@
 				CBF97D2F22B9FDE200032EC8 /* UserTests.swift */,
 				CBF97D3722BA02A600032EC8 /* LoginViewControllerTests.swift */,
 				CB1B723D22BB087B00B8542A /* LoginViewModelTests.swift */,
+				CB1B724522BB2E5300B8542A /* SignupViewControllerTests.swift */,
 				CBF97D1222B9F33400032EC8 /* Info.plist */,
 			);
 			path = LandmarkRemarkTests;
@@ -201,8 +223,8 @@
 		CBF97D3422B9FFC800032EC8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CBF97D3522BA00BE00032EC8 /* LoginViewController.swift */,
-				CB1B723B22BB086100B8542A /* LoginViewModel.swift */,
+				CB1B724022BB2B4D00B8542A /* Signup */,
+				CB1B723F22BB2B4200B8542A /* Login */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -490,6 +512,7 @@
 			files = (
 				CB1B723C22BB086100B8542A /* LoginViewModel.swift in Sources */,
 				CBF97D3622BA00BE00032EC8 /* LoginViewController.swift in Sources */,
+				CB1B724422BB2DAA00B8542A /* SignupViewController.swift in Sources */,
 				CBF97CFC22B9F33300032EC8 /* AppDelegate.swift in Sources */,
 				CBF97D3322B9FE9A00032EC8 /* User.swift in Sources */,
 			);
@@ -502,6 +525,7 @@
 				CB1B723E22BB087B00B8542A /* LoginViewModelTests.swift in Sources */,
 				CBF97D3822BA02A600032EC8 /* LoginViewControllerTests.swift in Sources */,
 				CBF97D3022B9FDE200032EC8 /* UserTests.swift in Sources */,
+				CB1B724622BB2E5300B8542A /* SignupViewControllerTests.swift in Sources */,
 				CBF97D1122B9F33400032EC8 /* LandmarkRemarkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
