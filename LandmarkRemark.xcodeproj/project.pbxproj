@@ -218,8 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				CBCE1B6222BC908600B2F881 /* LandmarkViewController.swift */,
-				CB63E71222BD16B7006F054E /* Compose New Note */,
 				CBD2D13222BC9F050031586E /* LandmarkMapViewController.swift */,
+				CB63E71222BD16B7006F054E /* Compose New Note */,
 			);
 			path = Landmark;
 			sourceTree = "<group>";

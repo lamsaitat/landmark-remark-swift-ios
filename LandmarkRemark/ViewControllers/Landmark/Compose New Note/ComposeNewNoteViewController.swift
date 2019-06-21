@@ -14,16 +14,19 @@ class ComposeNewNoteViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var postButtonItem: UIBarButtonItem!
     
-    var location: CLLocation!
+    var coordinate: CLLocationCoordinate2D!
     var viewModel: ComposeNewNoteViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let coordinate = coordinate {
+            viewModel = ComposeNewNoteViewModel(with: coordinate)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let location = location else {
+        guard coordinate != nil, viewModel != nil else {
             _ = presentLocationUnavailableAlert()
             return
         }

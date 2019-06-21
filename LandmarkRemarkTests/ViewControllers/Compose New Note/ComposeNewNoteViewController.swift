@@ -14,7 +14,7 @@ class ComposeNewNoteViewControllerTests: BaseTestCase {
     
     override func setUp() {
         vc = createComposeNewNoteViewController()
-        
+        vc.coordinate = wynyardCoord
         vc.loadViewIfNeeded()
     }
 
@@ -26,6 +26,22 @@ class ComposeNewNoteViewControllerTests: BaseTestCase {
         XCTAssertNotNil(vc.view)
         XCTAssertNotNil(vc.textView)
         XCTAssertNotNil(vc.postButtonItem)
+    }
+    
+    func testLoadViewWithLocationSupplied() {
+        guard let vc = vc else {
+            return XCTFail("ComposeNewNoteViewController not available to run the test.")
+        }
+        UIApplication.shared.keyWindow?.rootViewController = vc.navigationController
+        
+        let expectation = XCTestExpectation(description: "Waiting for alert to present")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+        XCTAssertNotNil(vc.coordinate)
+        XCTAssertNotNil(vc.viewModel)
+        XCTAssertNil(vc.presentedViewController)
     }
     
     func testLoadViewWithoutLocationShouldDisplayAlert() {
