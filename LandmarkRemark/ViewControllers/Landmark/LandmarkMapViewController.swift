@@ -12,5 +12,17 @@ import MapKit
 class LandmarkMapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    
+    private var hasInitialisedMap = false
 
+}
+
+
+extension LandmarkMapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        if hasInitialisedMap == false {
+            mapView.showAnnotations([userLocation], animated: true)
+            hasInitialisedMap = true
+        }
+    }
 }

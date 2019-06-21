@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QGC-7M-Sdx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-361" y="-741"/>
+            <point key="canvasLocation" x="-3091" y="18"/>
         </scene>
         <!--Sign up-->
         <scene sceneID="arQ-Ri-XSO">
@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJZ-87-HnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="528.98550724637687" y="-739.28571428571422"/>
+            <point key="canvasLocation" x="-2200" y="20"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -261,16 +261,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zx1-Mn-WHU">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Hv-3V-YCQ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                            </mapView>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zx1-Mn-WHU">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="pnz-H2-9Ru" id="NaU-sA-Ipq"/>
+                                        </connections>
+                                    </mapView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Zx1-Mn-WHU" firstAttribute="top" secondItem="4Hv-3V-YCQ" secondAttribute="top" id="2YV-p0-rOx"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zx1-Mn-WHU" secondAttribute="trailing" id="YGq-kt-XeN"/>
+                                    <constraint firstItem="Zx1-Mn-WHU" firstAttribute="leading" secondItem="4Hv-3V-YCQ" secondAttribute="leading" id="dbS-TN-Qsy"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zx1-Mn-WHU" secondAttribute="bottom" id="krI-Zs-hft"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="q7U-sV-DvG" firstAttribute="trailing" secondItem="Zx1-Mn-WHU" secondAttribute="trailing" id="71r-fe-tpA"/>
-                            <constraint firstItem="Zx1-Mn-WHU" firstAttribute="leading" secondItem="q7U-sV-DvG" secondAttribute="leading" id="UAk-cw-hXl"/>
-                            <constraint firstItem="Zx1-Mn-WHU" firstAttribute="top" secondItem="q7U-sV-DvG" secondAttribute="top" id="e2r-h5-S9A"/>
-                            <constraint firstItem="q7U-sV-DvG" firstAttribute="bottom" secondItem="Zx1-Mn-WHU" secondAttribute="bottom" id="tnM-MY-axN"/>
+                            <constraint firstItem="q7U-sV-DvG" firstAttribute="trailing" secondItem="4Hv-3V-YCQ" secondAttribute="trailing" id="8Sd-LQ-9XJ"/>
+                            <constraint firstItem="4Hv-3V-YCQ" firstAttribute="top" secondItem="q7U-sV-DvG" secondAttribute="top" id="9Il-gh-YrF"/>
+                            <constraint firstItem="q7U-sV-DvG" firstAttribute="bottom" secondItem="4Hv-3V-YCQ" secondAttribute="bottom" id="Rn6-y7-Lhy"/>
+                            <constraint firstItem="4Hv-3V-YCQ" firstAttribute="leading" secondItem="q7U-sV-DvG" secondAttribute="leading" id="y6V-IB-eLt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q7U-sV-DvG"/>
                     </view>
