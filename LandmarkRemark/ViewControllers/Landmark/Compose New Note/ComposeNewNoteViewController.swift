@@ -19,15 +19,14 @@ class ComposeNewNoteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let location = location else {
-            _ = presentLocationUnavailableAlert()
-            return
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        guard let location = location else {
+            _ = presentLocationUnavailableAlert()
+            return
+        }
         textView.becomeFirstResponder()
     }
 }

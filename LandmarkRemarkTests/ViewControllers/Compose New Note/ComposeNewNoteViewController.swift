@@ -28,6 +28,25 @@ class ComposeNewNoteViewControllerTests: BaseTestCase {
         XCTAssertNotNil(vc.postButtonItem)
     }
     
+    func testLoadViewWithoutLocationShouldDisplayAlert() {
+        vc = createComposeNewNoteViewController()
+        vc.loadViewIfNeeded()
+        UIApplication.shared.keyWindow?.rootViewController = vc.navigationController
+        
+        let expectation = XCTestExpectation(description: "Waiting for alert to present")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+        
+        let alert = vc.presentedViewController as? UIAlertController
+        XCTAssertNotNil(alert)
+        XCTAssertEqual(alert?.title, "Unable to publish note")
+        XCTAssertEqual(alert?.message, "Current location is not available.")
+        XCTAssertNotNil(alert?.actions.first)
+        XCTAssertEqual(alert?.actions.first?.title, "Dismiss")
+    }
+    
     func testPresentLocationUnavailableAlert() {
         guard let vc = vc else {
             return XCTFail("ComposeNewNoteViewController not available to run test.")
