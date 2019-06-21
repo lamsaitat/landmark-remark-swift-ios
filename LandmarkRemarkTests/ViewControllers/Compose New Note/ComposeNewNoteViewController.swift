@@ -27,4 +27,44 @@ class ComposeNewNoteViewControllerTests: BaseTestCase {
         XCTAssertNotNil(vc.textView)
         XCTAssertNotNil(vc.postButtonItem)
     }
+    
+    func testPresentLocationUnavailableAlert() {
+        guard let vc = vc else {
+            return XCTFail("ComposeNewNoteViewController not available to run test.")
+        }
+        UIApplication.shared.keyWindow?.rootViewController = vc.navigationController
+        let expectation = XCTestExpectation(description: "Waiting for alert to display.")
+        let alert = vc.presentLocationUnavailableAlert()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+        XCTAssertNotNil(alert.presentingViewController)
+        XCTAssertEqual(alert.title, "Unable to publish note")
+        XCTAssertEqual(alert.message, "Current location is not available.")
+        XCTAssertNotNil(alert.actions.first)
+        XCTAssertEqual(alert.actions.first?.title, "Dismiss")
+    }
+    
+    func testPresentErrorAlert() {
+        guard let vc = vc else {
+            return XCTFail("ComposeNewNoteViewController not available to run test.")
+        }
+        UIApplication.shared.keyWindow?.rootViewController = vc.navigationController
+        let expectation = XCTestExpectation(description: "Waiting for alert to display.")
+        
+        let error = NSError(domain: Bundle.main.bundleIdentifier!, code: 500, userInfo: [
+            NSLocalizedDescriptionKey: "This is an error."
+        ])
+        let alert = vc.presentAlert(withError: error)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10.0)
+        XCTAssertNotNil(alert.presentingViewController)
+        XCTAssertEqual(alert.title, "Unable to publish note")
+        XCTAssertEqual(alert.message, "Error: This is an error.")
+        XCTAssertNotNil(alert.actions.first)
+        XCTAssertEqual(alert.actions.first?.title, "Dismiss")
+    }
 }

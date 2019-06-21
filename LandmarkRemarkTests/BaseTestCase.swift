@@ -18,7 +18,6 @@ class BaseTestCase: XCTestCase {
     // Wynyard Station (-33.8670864, 151.2077854)
     let wynyardCoord = CLLocationCoordinate2D(latitude: CLLocationDegrees(-33.8670864), longitude: CLLocationDegrees(151.2077854))
     
-    
     func createLoginViewController() -> LoginViewController {
         guard let vc = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {
             fatalError("Unable to instantiate LoginViewController from storyboard.")

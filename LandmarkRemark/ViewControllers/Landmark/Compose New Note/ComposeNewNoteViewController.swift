@@ -37,3 +37,20 @@ extension ComposeNewNoteViewController {
 
 
 // MARK: - UI Logic
+extension ComposeNewNoteViewController {
+    func presentLocationUnavailableAlert() -> UIAlertController {
+        let alert = UIAlertController(title: "Unable to publish note", message: "Current location is not available.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: { [weak self] _ in
+            self?.dismiss(animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: nil)
+        return alert
+    }
+    
+    func presentAlert(withError error: Error) -> UIAlertController {
+        let alert = UIAlertController(title: "Unable to publish note", message: "Error: \(error.localizedDescription)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+        present(alert, animated: true, completion: nil)
+        return alert
+    }
+}
