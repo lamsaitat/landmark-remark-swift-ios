@@ -28,8 +28,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        stateDidChangeListenerHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            debugPrint("User logged in: \(user?.uid)")
+        stateDidChangeListenerHandle = Auth.auth().addStateDidChangeListener { (_, user) in
+            debugPrint("User logged in: \(String(describing: user?.uid))")
         }
     }
     
@@ -53,10 +53,29 @@ class LoginViewController: UIViewController {
 }
 
 
+// MARK: - IBActions
+extension LoginViewController {
+    @IBAction func loginButtonTouchUpInside(_ sender: UIButton) {
+        guard let email = emailTextField.text, email.count > 0 else {
+            emailTextField.markAsInvalid()
+            return
+        }
+        emailTextField.markAsValid()
+        guard let password = passwordTextField.text, password.count > 0 else {
+            passwordTextField.markAsInvalid()
+            return
+        }
+        passwordTextField.markAsValid()
+
+        performLogin(with: EmailAuthProvider.credential(withEmail: email, password: password))
+    }
+}
+
+
 // MARK: - public methods
 extension LoginViewController {
     func performLogin(with auth: AuthCredential) {
-        viewModel.performLogin(withCredential: auth) { user, error in
+        viewModel.performLogin(withCredential: auth) { _, error in
             if let error = error {
                 debugPrint("Error: \(error.localizedDescription)")
                 return

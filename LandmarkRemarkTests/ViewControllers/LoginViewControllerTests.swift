@@ -80,4 +80,51 @@ class LoginViewControllerTests: BaseTestCase {
         Auth.auth().removeStateDidChangeListener(handle)
         try? Auth.auth().signOut()
     }
+    
+    /**
+     Test that a valid login credential should properly login a user.
+     */
+    func testLoginButtonTappedWithSuccessfulLogin() {
+        let expectation = XCTestExpectation(description: "Wait for login.")
+        
+        let email = "testuser1@example.com"
+        let password = "Th1s1sAWeakPassw0rd"
+        
+        vc.emailTextField.text = email
+        vc.passwordTextField.text = password
+        var resultingUser: Firebase.User?
+        let handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            // The listener can fire at initialisation state.
+            // If there is no successful login, this test case will time out.
+            if let user = user {
+                resultingUser = user
+                expectation.fulfill()
+            }
+        }
+        vc.loginButtonTouchUpInside(vc.loginButton)
+        wait(for: [expectation], timeout: 15.0)
+        XCTAssertNotNil(resultingUser)
+        XCTAssertEqual(resultingUser?.email, email)
+        XCTAssertEqual(resultingUser?.displayName, "Test User No.1")
+        
+        // Clean up.
+        Auth.auth().removeStateDidChangeListener(handle)
+        try? Auth.auth().signOut()
+    }
+    
+    /**
+     Test that login attempt with empty fields should highlight the offending field.
+     */
+    func testLoginButtonWithMissingFields() {
+        vc.loginButtonTouchUpInside(vc.loginButton)
+        XCTAssertEqual(vc.emailTextField.layer.borderWidth, 1.0, "Empty emailTextField should highlight in red.")
+        XCTAssertEqual(vc.emailTextField.layer.borderColor, UIColor.red.cgColor, "Empty emailTextField should highlight in red.")
+        vc.emailTextField.text = "email@example.com"
+        vc.loginButtonTouchUpInside(vc.loginButton)
+        XCTAssertEqual(vc.emailTextField.layer.borderWidth, 0.0, "Valid emailTextField should not highlight.")
+        XCTAssertEqual(vc.emailTextField.layer.borderColor, UIColor.clear.cgColor, "Valid emailTextField should not highlight.")
+        
+        XCTAssertEqual(vc.passwordTextField.layer.borderWidth, 1.0, "Empty passwordTextField should highlight in red.")
+        XCTAssertEqual(vc.passwordTextField.layer.borderColor, UIColor.red.cgColor, "Empty passwordTextField should highlight in red.")
+    }
 }
