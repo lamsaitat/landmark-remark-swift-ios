@@ -20,6 +20,10 @@ class ComposeNewNoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let location = location else {
+            _ = presentLocationUnavailableAlert()
+            return
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +45,7 @@ extension ComposeNewNoteViewController {
     func presentLocationUnavailableAlert() -> UIAlertController {
         let alert = UIAlertController(title: "Unable to publish note", message: "Current location is not available.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: { [weak self] _ in
-            self?.dismiss(animated: true, completion: nil)
+            self?.navigationController?.popViewController(animated: true)
         }))
         present(alert, animated: true, completion: nil)
         return alert
