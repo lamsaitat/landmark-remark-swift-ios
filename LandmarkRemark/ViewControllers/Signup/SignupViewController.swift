@@ -42,19 +42,26 @@ extension SignupViewController {
     @IBAction func submitButtonTouchUpInside(_ sender: UIButton) {
         guard let username = usernameTextField.text, username.count > 0 else {
             usernameTextField.markAsInvalid()
+            usernameTextField.becomeFirstResponder()
             return
         }
         usernameTextField.markAsValid()
         guard let email = emailTextField.text, email.count > 0 else {
             emailTextField.markAsInvalid()
+            emailTextField.becomeFirstResponder()
             return
         }
         emailTextField.markAsValid()
         guard let password = passwordTextField.text, password.count > 0 else {
             passwordTextField.markAsInvalid()
+            passwordTextField.becomeFirstResponder()
             return
         }
         passwordTextField.markAsValid()
+        
+        usernameTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
         
         viewModel.performSignup(withEmail: email, password: password, username: username) { [weak self] (user, error) in
             guard let self = self else {

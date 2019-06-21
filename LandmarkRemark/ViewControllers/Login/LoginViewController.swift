@@ -57,14 +57,19 @@ extension LoginViewController {
     @IBAction func loginButtonTouchUpInside(_ sender: UIButton) {
         guard let email = emailTextField.text, email.count > 0 else {
             emailTextField.markAsInvalid()
+            emailTextField.becomeFirstResponder()
             return
         }
         emailTextField.markAsValid()
         guard let password = passwordTextField.text, password.count > 0 else {
             passwordTextField.markAsInvalid()
+            passwordTextField.becomeFirstResponder()
             return
         }
         passwordTextField.markAsValid()
+        
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
 
         performLogin(with: EmailAuthProvider.credential(withEmail: email, password: password))
     }
