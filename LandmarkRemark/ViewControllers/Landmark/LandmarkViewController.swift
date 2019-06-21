@@ -46,7 +46,6 @@ class LandmarkViewController: UIViewController {
 extension LandmarkViewController {
     @IBAction func logoutButtonItemTapped(_ sender: UIBarButtonItem) {
         do {
-            dismiss(animated: true, completion: nil)
             try Auth.auth().signOut()
         } catch let error {
             debugPrint("Error signing out: \(error.localizedDescription)")

@@ -14,9 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        
+        Auth.auth().addStateDidChangeListener { (_, user) in
+            self.applyRootViewController(for: user)
+        }
+        applyRootViewController(for: Auth.auth().currentUser)
         return true
     }
 
@@ -43,4 +47,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+
+// MARK: - Additional methods
+extension AppDelegate {
+    func createLoginViewController() -> LoginViewController {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {
+            fatalError("Unable to instantiate LoginViewController instance")
+        }
+        return vc
+    }
+    
+    func createLandmarkViewController() -> LandmarkViewController {
+        guard let navController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LandmarkNavController") as? UINavigationController, let vc = navController.viewControllers.first as? LandmarkViewController else {
+            fatalError("Unable to instantiate LandmarkViewController instance")
+        }
+        return vc
+    }
+    
+    func applyRootViewController(for user: Firebase.User?) {
+        if user == nil {
+            UIApplication.shared.keyWindow?.rootViewController = createLoginViewController()
+        } else {
+            UIApplication.shared.keyWindow?.rootViewController = createLandmarkViewController().navigationController
+        }
+    }
 }

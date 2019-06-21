@@ -21,14 +21,6 @@ class LoginViewController: UIViewController {
     
     let viewModel = LoginViewModel()
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        // Skip login flow.
-        if Auth.auth().currentUser != nil {
-            performSegue(withIdentifier: SegueName.presentLandmark.rawValue, sender: self)
-        }
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         loginButton.layer.cornerRadius = 5.0
@@ -79,16 +71,10 @@ extension LoginViewController {
 // MARK: - public methods
 extension LoginViewController {
     func performLogin(with auth: AuthCredential) {
-        viewModel.performLogin(withCredential: auth) { [weak self] user, error in
+        viewModel.performLogin(withCredential: auth) { [weak self] _, error in
             if let error = error {
                 _ = self?.presentLoginErrorAlert(with: error)
                 return
-            }
-            
-            if user != nil {
-                DispatchQueue.main.async {
-                    self?.performSegue(withIdentifier: SegueName.presentLandmark.rawValue, sender: self)
-                }
             }
         }
     }
