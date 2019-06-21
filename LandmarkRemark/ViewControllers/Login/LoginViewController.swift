@@ -21,6 +21,14 @@ class LoginViewController: UIViewController {
     
     let viewModel = LoginViewModel()
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // Skip login flow.
+        if Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: SegueName.presentLandmark.rawValue, sender: self)
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         loginButton.layer.cornerRadius = 5.0
