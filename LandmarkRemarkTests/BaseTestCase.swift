@@ -41,4 +41,12 @@ class BaseTestCase: XCTestCase {
         }
         return vc
     }
+    
+    func createComposeNewNoteViewController() -> ComposeNewNoteViewController {
+        guard let vc = mainStoryboard.instantiateViewController(withIdentifier: "ComposeNewNoteViewController") as? ComposeNewNoteViewController else {
+            fatalError("Unable to create ComposeNewNoteViewController from storyboard.")
+        }
+        _ = UINavigationController(rootViewController: vc)
+        return vc
+    }
 }

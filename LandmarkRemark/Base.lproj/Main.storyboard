@@ -242,6 +242,11 @@
                                 <segment title="List View"/>
                             </segments>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="7kJ-Oa-5qX">
+                            <connections>
+                                <segue destination="9sh-4l-XIy" kind="show" id="6xd-lK-eaj"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="1OR-jT-g4B" id="bev-jh-db6"/>
@@ -296,6 +301,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIb-Am-N2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="209" y="1365"/>
+        </scene>
+        <!--New Note-->
+        <scene sceneID="R6f-VT-h1y">
+            <objects>
+                <viewController storyboardIdentifier="ComposeNewNoteViewController" title="New Note" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9sh-4l-XIy" customClass="ComposeNewNoteViewController" customModule="LandmarkRemark" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uvr-lB-ig9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ifq-NU-LFb">
+                                <rect key="frame" x="0.0" y="88" width="414" height="362.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ifq-NU-LFb" firstAttribute="leading" secondItem="qJ4-mT-d0N" secondAttribute="leading" id="4m0-6U-XsU"/>
+                            <constraint firstItem="ifq-NU-LFb" firstAttribute="top" secondItem="qJ4-mT-d0N" secondAttribute="top" id="lql-c5-ksT"/>
+                            <constraint firstItem="ifq-NU-LFb" firstAttribute="trailing" secondItem="qJ4-mT-d0N" secondAttribute="trailing" id="qPj-wt-gMl"/>
+                            <constraint firstItem="ifq-NU-LFb" firstAttribute="height" secondItem="qJ4-mT-d0N" secondAttribute="height" multiplier="1:2" id="tKo-tg-Bzg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qJ4-mT-d0N"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="New Note" id="IJW-ND-9u8">
+                        <barButtonItem key="rightBarButtonItem" title="Publish" id="Fc5-KS-Rwk">
+                            <connections>
+                                <action selector="postButtonTapped:" destination="9sh-4l-XIy" id="Kc3-6O-R17"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="postButtonItem" destination="Fc5-KS-Rwk" id="pif-l4-NZc"/>
+                        <outlet property="textView" destination="ifq-NU-LFb" id="xj5-ZV-2ps"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ms-40-PVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1353.6231884057972" y="643.52678571428567"/>
         </scene>
     </scenes>
 </document>
