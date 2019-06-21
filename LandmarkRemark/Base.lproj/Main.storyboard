@@ -205,24 +205,47 @@
             </objects>
             <point key="canvasLocation" x="-362" y="644"/>
         </scene>
-        <!--Landmark Remark-->
+        <!--Landmark View Controller-->
         <scene sceneID="J3G-zM-f5d">
             <objects>
                 <viewController storyboardIdentifier="LandmarkViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XbR-z1-btr" customClass="LandmarkViewController" customModule="LandmarkRemark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c4Y-wt-haS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1OR-jT-g4B">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gX9-UY-4ns" firstAttribute="trailing" secondItem="1OR-jT-g4B" secondAttribute="trailing" id="5LE-gs-zKi"/>
+                            <constraint firstItem="1OR-jT-g4B" firstAttribute="leading" secondItem="gX9-UY-4ns" secondAttribute="leading" id="iRW-VH-YEU"/>
+                            <constraint firstItem="gX9-UY-4ns" firstAttribute="bottom" secondItem="1OR-jT-g4B" secondAttribute="bottom" id="twp-eL-pDg"/>
+                            <constraint firstItem="1OR-jT-g4B" firstAttribute="top" secondItem="gX9-UY-4ns" secondAttribute="top" id="vUA-HG-48S"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gX9-UY-4ns"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Landmark Remark" id="upi-u7-kFW">
+                    <navigationItem key="navigationItem" id="upi-u7-kFW">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="3Lv-L6-gv0">
                             <connections>
                                 <action selector="logoutButtonItemTapped:" destination="XbR-z1-btr" id="z02-Ya-Cs8"/>
                             </connections>
                         </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="aHW-Sh-GDo">
+                            <rect key="frame" x="133.5" y="7" width="147" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Map View"/>
+                                <segment title="List View"/>
+                            </segments>
+                        </segmentedControl>
                     </navigationItem>
                     <connections>
+                        <outlet property="contentView" destination="1OR-jT-g4B" id="bev-jh-db6"/>
+                        <outlet property="contentViewSegmentedControl" destination="aHW-Sh-GDo" id="VUy-ag-fRs"/>
                         <outlet property="logoutButtonItem" destination="3Lv-L6-gv0" id="QCB-zE-6Gt"/>
                     </connections>
                 </viewController>

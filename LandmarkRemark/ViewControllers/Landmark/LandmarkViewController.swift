@@ -8,17 +8,27 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
 class LandmarkViewController: UIViewController {
     
     @IBOutlet weak var logoutButtonItem: UIBarButtonItem!
+    @IBOutlet weak var contentViewSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var contentView: UIView!
+    
+    let locationManager = CLLocationManager()
+    var mapViewController: LandmarkMapViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        if let mapViewController = storyboard?.instantiateViewController(withIdentifier: "LandmarkMapViewController") as? LandmarkMapViewController {
+            self.mapViewController = mapViewController
+        }
+        embed(childViewController: mapViewController)
     }
-    
 
     /*
     // MARK: - Navigation
@@ -41,5 +51,25 @@ extension LandmarkViewController {
         } catch let error {
             debugPrint("Error signing out: \(error.localizedDescription)")
         }
+    }
+}
+
+
+extension LandmarkViewController {
+    func embed(childViewController child: UIViewController) {
+        guard let contentView = contentView, let childView = child.view else {
+            debugPrint("WARNING: Views not available for embedding.")
+            return
+        }
+        if children.contains(child) == false {
+            addChild(child)
+        }
+        contentView.addSubview(child.view)
+        view.addConstraints([
+            NSLayoutConstraint(item: contentView, attribute: .top, relatedBy: .equal, toItem: childView, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .equal, toItem: childView, attribute: .bottom, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: contentView, attribute: .leading, relatedBy: .equal, toItem: childView, attribute: .leading, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: contentView, attribute: .trailing, relatedBy: .equal, toItem: childView, attribute: .trailing, multiplier: 1.0, constant: 0)
+        ])
     }
 }
