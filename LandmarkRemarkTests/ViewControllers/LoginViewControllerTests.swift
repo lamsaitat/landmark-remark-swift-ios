@@ -62,7 +62,7 @@ class LoginViewControllerTests: BaseTestCase {
         let password = "Th1s1sAWeakPassw0rd"
         let auth = EmailAuthProvider.credential(withEmail: email, password: password)
         var resultingUser: Firebase.User?
-        let handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+        let handle = Auth.auth().addStateDidChangeListener { _, user in
             // The listener can fire at initialisation state.
             // If there is no successful login, this test case will time out.
             if let user = user {
@@ -93,7 +93,7 @@ class LoginViewControllerTests: BaseTestCase {
         vc.emailTextField.text = email
         vc.passwordTextField.text = password
         var resultingUser: Firebase.User?
-        let handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+        let handle = Auth.auth().addStateDidChangeListener { _, user in
             // The listener can fire at initialisation state.
             // If there is no successful login, this test case will time out.
             if let user = user {
@@ -141,5 +141,45 @@ class LoginViewControllerTests: BaseTestCase {
         XCTAssertEqual(alert.presentingViewController, vc.navigationController)
         XCTAssertEqual(alert.title, "Sorry")
         XCTAssertEqual(alert.message, "Unable to login.\nError: This is an error")
+    }
+    
+    /**
+     On successful login the view controller should present the landmark view
+     controller via a navigation controller.
+     */
+    func testSuccessfulLoginToPresentLandmarkNavController() {
+        guard let vc = vc else {
+            return XCTFail("LoginViewController instance not available for testing.")
+        }
+        let loginExpectation = XCTestExpectation(description: "Wait for login.")
+        let presentExpectation = XCTestExpectation(description: "Wait for modal presentation.")
+        let email = "testuser1@example.com"
+        let password = "Th1s1sAWeakPassw0rd"
+        
+        vc.emailTextField.text = email
+        vc.passwordTextField.text = password
+        var resultingUser: Firebase.User?
+        let handle = Auth.auth().addStateDidChangeListener { _, user in
+            if let user = user {
+                resultingUser = user
+                loginExpectation.fulfill()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                    XCTAssertNotNil(vc.presentedViewController)
+                    presentExpectation.fulfill()
+                })
+            }
+        }
+        vc.loginButtonTouchUpInside(vc.loginButton)
+        wait(for: [loginExpectation, presentExpectation], timeout: 15.0, enforceOrder: true)
+        XCTAssertNotNil(resultingUser)
+        XCTAssertEqual(resultingUser?.email, email)
+        XCTAssertEqual(resultingUser?.displayName, "Test User No.1")
+        let navController = vc.presentedViewController as? UINavigationController
+        XCTAssertNotNil(navController)
+        
+        // Clean up.
+        Auth.auth().removeStateDidChangeListener(handle)
+        try? Auth.auth().signOut()
     }
 }

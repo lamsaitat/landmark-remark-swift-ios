@@ -27,4 +27,11 @@ class BaseTestCase: XCTestCase {
         }
         return vc
     }
+    
+    func createLandmarkViewController() -> LandmarkViewController {
+        guard let navController = mainStoryboard.instantiateViewController(withIdentifier: "LandmarkNavController") as? UINavigationController, let vc = navController.viewControllers.first as? LandmarkViewController else {
+            fatalError("Unable to create LandmarkViewController from storyboard.")
+        }
+        return vc
+    }
 }

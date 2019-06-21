@@ -10,6 +10,9 @@ import UIKit
 import Firebase
 
 class LoginViewController: UIViewController {
+    enum SegueName: String {
+        case presentLandmark = "presentLandmarkSegue"
+    }
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -17,21 +20,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signupButton: UIButton!
     
     let viewModel = LoginViewModel()
-    var stateDidChangeListenerHandle: AuthStateDidChangeListenerHandle?
-    
-    
-    deinit {
-        if let handle = stateDidChangeListenerHandle {
-            Auth.auth().removeStateDidChangeListener(handle)
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        stateDidChangeListenerHandle = Auth.auth().addStateDidChangeListener { (_, user) in
-            debugPrint("User logged in: \(String(describing: user?.uid))")
-        }
-    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -75,10 +63,16 @@ extension LoginViewController {
 // MARK: - public methods
 extension LoginViewController {
     func performLogin(with auth: AuthCredential) {
-        viewModel.performLogin(withCredential: auth) { [weak self] _, error in
+        viewModel.performLogin(withCredential: auth) { [weak self] user, error in
             if let error = error {
                 _ = self?.presentLoginErrorAlert(with: error)
                 return
+            }
+            
+            if user != nil {
+                DispatchQueue.main.async {
+                    self?.performSegue(withIdentifier: SegueName.presentLandmark.rawValue, sender: self)
+                }
             }
         }
     }

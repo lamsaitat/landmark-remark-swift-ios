@@ -182,11 +182,53 @@
                         <outlet property="loginButton" destination="prd-gv-gan" id="CGU-CR-pOj"/>
                         <outlet property="passwordTextField" destination="Jf1-Ge-SNg" id="hiI-Di-FlM"/>
                         <outlet property="signupButton" destination="koY-yh-44S" id="Kur-Lf-uTR"/>
+                        <segue destination="X99-6I-dQg" kind="presentation" identifier="presentLandmarkSegue" id="dD2-mg-DCQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-987" y="-53"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Vxq-RY-Ypa">
+            <objects>
+                <navigationController storyboardIdentifier="LandmarkNavController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="X99-6I-dQg" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OQC-VZ-kLI">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="XbR-z1-btr" kind="relationship" relationship="rootViewController" id="wWx-O0-hWM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pgi-lX-nBL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-362" y="644"/>
+        </scene>
+        <!--Landmark Remark-->
+        <scene sceneID="J3G-zM-f5d">
+            <objects>
+                <viewController storyboardIdentifier="LandmarkViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XbR-z1-btr" customClass="LandmarkViewController" customModule="LandmarkRemark" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c4Y-wt-haS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="gX9-UY-4ns"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Landmark Remark" id="upi-u7-kFW">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="3Lv-L6-gv0">
+                            <connections>
+                                <action selector="logoutButtonItemTapped:" destination="XbR-z1-btr" id="z02-Ya-Cs8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="logoutButtonItem" destination="3Lv-L6-gv0" id="QCB-zE-6Gt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5tJ-rn-zIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="481" y="644"/>
         </scene>
     </scenes>
 </document>
