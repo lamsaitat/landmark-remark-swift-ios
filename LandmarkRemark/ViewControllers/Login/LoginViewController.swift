@@ -42,6 +42,9 @@ class LoginViewController: UIViewController {
                 guard let auth = auth else {
                     return
                 }
+                DispatchQueue.main.async {
+                    self?.dismiss(animated: true, completion: nil)
+                }
                 self?.performLogin(with: auth)
             }
         }
