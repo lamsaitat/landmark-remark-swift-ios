@@ -14,6 +14,7 @@ class ComposeNewNoteViewControllerTests: BaseTestCase {
     
     override func setUp() {
         vc = createComposeNewNoteViewController()
+        
         vc.loadViewIfNeeded()
     }
 

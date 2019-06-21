@@ -14,10 +14,12 @@ class ComposeNewNoteViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var postButtonItem: UIBarButtonItem!
     
+    var location: CLLocation!
+    var viewModel: ComposeNewNoteViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,3 +34,6 @@ extension ComposeNewNoteViewController {
     @IBAction func postButtonTapped(_ sender: UIBarButtonItem) {
     }
 }
+
+
+// MARK: - UI Logic
