@@ -34,4 +34,11 @@ class BaseTestCase: XCTestCase {
         }
         return vc
     }
+    
+    func createLandmarkMapViewController() -> LandmarkMapViewController {
+        guard let vc = mainStoryboard.instantiateViewController(withIdentifier: "LandmarkMapViewController") as? LandmarkMapViewController else {
+            fatalError("Unable to create LandmarkMapViewController from storyboard.")
+        }
+        return vc
+    }
 }

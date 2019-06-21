@@ -21,6 +21,8 @@
 		CB8E0F1722BBC2B800BBB681 /* UITextFieldExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8E0F1622BBC2B800BBB681 /* UITextFieldExtensionTests.swift */; };
 		CBCE1B6322BC908600B2F881 /* LandmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE1B6222BC908600B2F881 /* LandmarkViewController.swift */; };
 		CBCE1B6522BC909900B2F881 /* LandmarkViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE1B6422BC909900B2F881 /* LandmarkViewControllerTests.swift */; };
+		CBD2D13322BC9F050031586E /* LandmarkMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D13222BC9F050031586E /* LandmarkMapViewController.swift */; };
+		CBD2D13722BCA1960031586E /* LandmarkMapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D13622BCA1960031586E /* LandmarkMapViewControllerTests.swift */; };
 		CBF97CFC22B9F33300032EC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF97CFB22B9F33300032EC8 /* AppDelegate.swift */; };
 		CBF97D0122B9F33300032EC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBF97CFF22B9F33300032EC8 /* Main.storyboard */; };
 		CBF97D0322B9F33400032EC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF97D0222B9F33400032EC8 /* Assets.xcassets */; };
@@ -71,6 +73,8 @@
 		CB8E0F1622BBC2B800BBB681 /* UITextFieldExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensionTests.swift; sourceTree = "<group>"; };
 		CBCE1B6222BC908600B2F881 /* LandmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkViewController.swift; sourceTree = "<group>"; };
 		CBCE1B6422BC909900B2F881 /* LandmarkViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkViewControllerTests.swift; sourceTree = "<group>"; };
+		CBD2D13222BC9F050031586E /* LandmarkMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkMapViewController.swift; sourceTree = "<group>"; };
+		CBD2D13622BCA1960031586E /* LandmarkMapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkMapViewControllerTests.swift; sourceTree = "<group>"; };
 		CBF97CF822B9F33300032EC8 /* LandmarkRemark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LandmarkRemark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF97CFB22B9F33300032EC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBF97D0022B9F33300032EC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				CBD2D13422BCA06F0031586E /* Login */,
 				CBD2D13522BCA0780031586E /* Signup */,
 				CBCE1B6422BC909900B2F881 /* LandmarkViewControllerTests.swift */,
+				CBD2D13622BCA1960031586E /* LandmarkMapViewControllerTests.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				CBCE1B6222BC908600B2F881 /* LandmarkViewController.swift */,
+				CBD2D13222BC9F050031586E /* LandmarkMapViewController.swift */,
 			);
 			path = Landmark;
 			sourceTree = "<group>";
@@ -590,6 +596,7 @@
 				CB1B723C22BB086100B8542A /* LoginViewModel.swift in Sources */,
 				CBF97D3622BA00BE00032EC8 /* LoginViewController.swift in Sources */,
 				CB1B724422BB2DAA00B8542A /* SignupViewController.swift in Sources */,
+				CBD2D13322BC9F050031586E /* LandmarkMapViewController.swift in Sources */,
 				CBF97CFC22B9F33300032EC8 /* AppDelegate.swift in Sources */,
 				CBF97D3322B9FE9A00032EC8 /* User.swift in Sources */,
 			);
@@ -605,6 +612,7 @@
 				CB1B724C22BBB4DE00B8542A /* SignupViewModelTests.swift in Sources */,
 				CBF97D3022B9FDE200032EC8 /* UserTests.swift in Sources */,
 				CB8E0F1722BBC2B800BBB681 /* UITextFieldExtensionTests.swift in Sources */,
+				CBD2D13722BCA1960031586E /* LandmarkMapViewControllerTests.swift in Sources */,
 				CB1B724622BB2E5300B8542A /* SignupViewControllerTests.swift in Sources */,
 				CB1B724822BB396800B8542A /* BaseTestCase.swift in Sources */,
 			);

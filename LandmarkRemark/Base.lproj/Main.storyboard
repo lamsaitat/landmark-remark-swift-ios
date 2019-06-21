@@ -230,5 +230,34 @@
             </objects>
             <point key="canvasLocation" x="481" y="644"/>
         </scene>
+        <!--Landmark Map View Controller-->
+        <scene sceneID="DeZ-i0-hlT">
+            <objects>
+                <viewController storyboardIdentifier="LandmarkMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pnz-H2-9Ru" customClass="LandmarkMapViewController" customModule="LandmarkRemark" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zAc-bB-CZF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zx1-Mn-WHU">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="q7U-sV-DvG" firstAttribute="trailing" secondItem="Zx1-Mn-WHU" secondAttribute="trailing" id="71r-fe-tpA"/>
+                            <constraint firstItem="Zx1-Mn-WHU" firstAttribute="leading" secondItem="q7U-sV-DvG" secondAttribute="leading" id="UAk-cw-hXl"/>
+                            <constraint firstItem="Zx1-Mn-WHU" firstAttribute="top" secondItem="q7U-sV-DvG" secondAttribute="top" id="e2r-h5-S9A"/>
+                            <constraint firstItem="q7U-sV-DvG" firstAttribute="bottom" secondItem="Zx1-Mn-WHU" secondAttribute="bottom" id="tnM-MY-axN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="q7U-sV-DvG"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Zx1-Mn-WHU" id="AyT-S4-ywX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gIb-Am-N2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="209" y="1365"/>
+        </scene>
     </scenes>
 </document>
