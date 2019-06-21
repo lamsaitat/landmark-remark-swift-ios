@@ -177,10 +177,8 @@
 		CB8E0F1322BBC28200BBB681 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CBF97D3722BA02A600032EC8 /* LoginViewControllerTests.swift */,
-				CB1B723D22BB087B00B8542A /* LoginViewModelTests.swift */,
-				CB1B724522BB2E5300B8542A /* SignupViewControllerTests.swift */,
-				CB1B724B22BBB4DE00B8542A /* SignupViewModelTests.swift */,
+				CBD2D13422BCA06F0031586E /* Login */,
+				CBD2D13522BCA0780031586E /* Signup */,
 				CBCE1B6422BC909900B2F881 /* LandmarkViewControllerTests.swift */,
 			);
 			path = ViewControllers;
@@ -208,6 +206,24 @@
 				CBCE1B6222BC908600B2F881 /* LandmarkViewController.swift */,
 			);
 			path = Landmark;
+			sourceTree = "<group>";
+		};
+		CBD2D13422BCA06F0031586E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CBF97D3722BA02A600032EC8 /* LoginViewControllerTests.swift */,
+				CB1B723D22BB087B00B8542A /* LoginViewModelTests.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		CBD2D13522BCA0780031586E /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				CB1B724522BB2E5300B8542A /* SignupViewControllerTests.swift */,
+				CB1B724B22BBB4DE00B8542A /* SignupViewModelTests.swift */,
+			);
+			path = Signup;
 			sourceTree = "<group>";
 		};
 		CBF97CEF22B9F33300032EC8 = {
