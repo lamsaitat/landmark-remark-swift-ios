@@ -152,7 +152,6 @@ class LoginViewControllerTests: BaseTestCase {
             return XCTFail("LoginViewController instance not available for testing.")
         }
         let loginExpectation = XCTestExpectation(description: "Wait for login.")
-        let presentExpectation = XCTestExpectation(description: "Wait for modal presentation.")
         let email = "testuser1@example.com"
         let password = "Th1s1sAWeakPassw0rd"
         
@@ -163,20 +162,19 @@ class LoginViewControllerTests: BaseTestCase {
             if let user = user {
                 resultingUser = user
                 loginExpectation.fulfill()
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                    XCTAssertNotNil(vc.presentedViewController)
-                    presentExpectation.fulfill()
-                })
             }
         }
         vc.loginButtonTouchUpInside(vc.loginButton)
-        wait(for: [loginExpectation, presentExpectation], timeout: 15.0, enforceOrder: true)
+        wait(for: [loginExpectation], timeout: 15.0)
         XCTAssertNotNil(resultingUser)
         XCTAssertEqual(resultingUser?.email, email)
         XCTAssertEqual(resultingUser?.displayName, "Test User No.1")
-        let navController = vc.presentedViewController as? UINavigationController
+
+        XCTAssertNotEqual(UIApplication.shared.keyWindow?.rootViewController, vc)
+        let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
         XCTAssertNotNil(navController)
+        XCTAssertNotNil(navController?.viewControllers.first as? LandmarkViewController)
+        XCTAssertNotNil(Auth.auth().currentUser)
         
         // Clean up.
         Auth.auth().removeStateDidChangeListener(handle)

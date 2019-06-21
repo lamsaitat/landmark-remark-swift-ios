@@ -44,8 +44,8 @@ class LandmarkViewControllerTests: BaseTestCase {
         }
         
         wait(for: [expectation], timeout: 10)
-        XCTAssertNil(vc.navigationController?.presentingViewController)
-        XCTAssertNil(loginVc.presentedViewController)
+        XCTAssertNotEqual(UIApplication.shared.keyWindow?.rootViewController, vc.navigationController)
+        XCTAssertNotNil(UIApplication.shared.keyWindow?.rootViewController as? LoginViewController)
         XCTAssertNil(Auth.auth().currentUser)
     }
 }
