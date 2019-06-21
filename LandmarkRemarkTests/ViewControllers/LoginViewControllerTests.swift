@@ -127,4 +127,19 @@ class LoginViewControllerTests: BaseTestCase {
         XCTAssertEqual(vc.passwordTextField.layer.borderWidth, 1.0, "Empty passwordTextField should highlight in red.")
         XCTAssertEqual(vc.passwordTextField.layer.borderColor, UIColor.red.cgColor, "Empty passwordTextField should highlight in red.")
     }
+    
+    func testPresentLoginErrorAlert() {
+        let error = NSError(domain: Bundle.main.bundleIdentifier!, code: 500, userInfo: [
+            NSLocalizedDescriptionKey: "This is an error"
+            ])
+        let expectation = XCTestExpectation(description: "Wait for alert to present.")
+        let alert = vc.presentLoginErrorAlert(with: error)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10)
+        XCTAssertEqual(alert.presentingViewController, vc.navigationController)
+        XCTAssertEqual(alert.title, "Sorry")
+        XCTAssertEqual(alert.message, "Unable to login.\nError: This is an error")
+    }
 }

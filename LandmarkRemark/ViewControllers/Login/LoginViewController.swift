@@ -75,11 +75,17 @@ extension LoginViewController {
 // MARK: - public methods
 extension LoginViewController {
     func performLogin(with auth: AuthCredential) {
-        viewModel.performLogin(withCredential: auth) { _, error in
+        viewModel.performLogin(withCredential: auth) { [weak self] _, error in
             if let error = error {
-                debugPrint("Error: \(error.localizedDescription)")
+                _ = self?.presentLoginErrorAlert(with: error)
                 return
             }
         }
+    }
+    
+    func presentLoginErrorAlert(with error: Error) -> UIAlertController {
+        let alert = UIAlertController(title: "Sorry", message: "Unable to login.\nError: \(error.localizedDescription)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+        return alert
     }
 }
