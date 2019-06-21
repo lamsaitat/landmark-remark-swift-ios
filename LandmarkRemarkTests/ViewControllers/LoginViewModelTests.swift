@@ -17,6 +17,7 @@ class LoginViewModelTests: XCTestCase {
     }
 
     override func tearDown() {
+        try? Auth.auth().signOut()
         vm = nil
     }
     

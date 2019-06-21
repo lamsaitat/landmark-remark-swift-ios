@@ -16,10 +16,21 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     
+    let viewModel = LoginViewModel()
+    var stateDidChangeListenerHandle: AuthStateDidChangeListenerHandle?
+    
+    
+    deinit {
+        if let handle = stateDidChangeListenerHandle {
+            Auth.auth().removeStateDidChangeListener(handle)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        stateDidChangeListenerHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            debugPrint("User logged in: \(user?.uid)")
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -31,8 +42,24 @@ class LoginViewController: UIViewController {
         super.prepare(for: segue, sender: sender)
         
         if let navController = segue.destination as? UINavigationController, let vc = navController.viewControllers.first as? SignupViewController {
-            vc.signupCompletionBlock = { [weak self] user, auth in
-                // TODO: Perform login with AuthCredential.
+            vc.signupCompletionBlock = { [weak self] (user: Firebase.User?, auth: Firebase.AuthCredential?) in
+                guard let auth = auth else {
+                    return
+                }
+                self?.performLogin(with: auth)
+            }
+        }
+    }
+}
+
+
+// MARK: - public methods
+extension LoginViewController {
+    func performLogin(with auth: AuthCredential) {
+        viewModel.performLogin(withCredential: auth) { user, error in
+            if let error = error {
+                debugPrint("Error: \(error.localizedDescription)")
+                return
             }
         }
     }
