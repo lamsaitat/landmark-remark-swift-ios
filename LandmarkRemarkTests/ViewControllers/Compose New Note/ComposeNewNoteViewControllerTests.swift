@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import LandmarkRemark
+@testable import Firebase
 
 class ComposeNewNoteViewControllerTests: BaseTestCase {
     var vc: ComposeNewNoteViewController!
@@ -101,5 +102,61 @@ class ComposeNewNoteViewControllerTests: BaseTestCase {
         XCTAssertEqual(alert.message, "Error: This is an error.")
         XCTAssertNotNil(alert.actions.first)
         XCTAssertEqual(alert.actions.first?.title, "Dismiss")
+    }
+    
+    /**
+     Test a successful publishing flow.
+     The view controller method only reacts by no alert presenting and the vc
+     itself is popped.
+     */
+    func testPublishButtonTappedSuccessfullyPublished() {
+        // Sign out any pre-existing user.
+        try? Auth.auth().signOut()
+        
+        // Step 1: Authenticate user for composing a note.
+        let email = "testuser1@example.com"
+        let password = "Th1s1sAWeakPassw0rd"
+        let loginExpectation = XCTestExpectation(description: "Waiting for login to complete.")
+        Auth.auth().signIn(withEmail: email, password: password) { (_, error) in
+            if let error = error {
+                return XCTFail("Unexpected error while logging in user: \(error.localizedDescription)")
+            }
+            loginExpectation.fulfill()
+        }
+        wait(for: [loginExpectation], timeout: 30.0)
+        XCTAssertNotNil(Auth.auth().currentUser)
+        
+        // Step 2: Pushes a ComposeNewNoteViewController instance to the
+        // LandmarkViewController's navigation stack.
+        guard let vc = vc, let navController = vc.navigationController else {
+            return XCTFail("ComposeNewNoteViewController not available to run test.")
+        }
+        let landmarkVc = createLandmarkViewController()
+        guard let landmarkNavController = landmarkVc.navigationController else {
+            return XCTFail("LandmarkViewController not available to run test.")
+        }
+        let message = "This is a test message for testPublishButtonTappedSuccessfullyPublished()"
+        UIApplication.shared.keyWindow?.rootViewController = landmarkNavController
+        landmarkNavController.pushViewController(vc, animated: false)
+        let expectation = XCTestExpectation(description: "Waiting for publish to complete.")
+        var resultingSnapshot: DataSnapshot!
+        Database.database().reference(withPath: Note.databaseName).queryEqual(toValue: message, childKey: "message").observe(.value) { snapshot in
+            resultingSnapshot = snapshot
+            // Adds a delay to allow for navigation animation.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+                expectation.fulfill()
+            })
+        }
+        vc.textView.text = message
+        vc.postButtonTapped(vc.postButtonItem)
+        wait(for: [expectation], timeout: 30.0)
+        XCTAssertNotNil(resultingSnapshot)
+        
+        // Test the compose vc has been popped off the navigation stack.
+        XCTAssertNotEqual(navController.topViewController, vc)
+        
+        // Clean up.
+        resultingSnapshot.ref.removeValue()
+        try? Auth.auth().signOut()
     }
 }

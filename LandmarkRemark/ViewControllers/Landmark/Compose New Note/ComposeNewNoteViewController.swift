@@ -38,6 +38,13 @@ class ComposeNewNoteViewController: UIViewController {
 // MARK: - IBActions
 extension ComposeNewNoteViewController {
     @IBAction func postButtonTapped(_ sender: UIBarButtonItem) {
+        viewModel.publishNewNote(textView.text) { [weak self] (_, error) in
+            if let error = error {
+                _ = self?.presentAlert(withError: error)
+                return
+            }
+            self?.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
