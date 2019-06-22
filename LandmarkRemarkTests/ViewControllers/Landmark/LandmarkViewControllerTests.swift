@@ -32,21 +32,33 @@ class LandmarkViewControllerTests: BaseTestCase {
         guard let navController = vc.navigationController, let vc = vc else {
             return XCTFail("LandmarkViewController not available for testing.")
         }
-        let expectation = XCTestExpectation(description: "Wait for modal dismiss")
-        let loginVc = createLoginViewController()
-        UIApplication.shared.keyWindow?.rootViewController = loginVc
+        // Sign out any pre-existing user.
+        try? Auth.auth().signOut()
         
-        loginVc.present(navController, animated: true) {
-            vc.logoutButtonItemTapped(vc.logoutButtonItem)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-                expectation.fulfill()
-            })
+        // Step 1: Authenticate user for composing a note.
+        let email = "testuser1@example.com"
+        let password = "Th1s1sAWeakPassw0rd"
+        let loginExpectation = XCTestExpectation(description: "Waiting for login to complete.")
+        Auth.auth().signIn(withEmail: email, password: password) { (_, error) in
+            if let error = error {
+                return XCTFail("Unexpected error while logging in user: \(error.localizedDescription)")
+            }
+            loginExpectation.fulfill()
         }
+        wait(for: [loginExpectation], timeout: 30.0)
+        XCTAssertNotNil(Auth.auth().currentUser)
+        UIApplication.shared.keyWindow?.rootViewController = navController
         
-        wait(for: [expectation], timeout: 10)
+        // Arbitrarily introduces a delay to allow for the logout to complete.
+        let logoutExpectation = XCTestExpectation(description: "Waiting for logout to complete.")
+        vc.logoutButtonItemTapped(vc.logoutButtonItem)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            XCTAssertNil(Auth.auth().currentUser)
+            logoutExpectation.fulfill()
+        }
+        wait(for: [logoutExpectation], timeout: 30.0)
         XCTAssertNotEqual(UIApplication.shared.keyWindow?.rootViewController, vc.navigationController)
         XCTAssertNotNil(UIApplication.shared.keyWindow?.rootViewController as? LoginViewController)
-        XCTAssertNil(Auth.auth().currentUser)
     }
     
     func testSwitchingContentView() {
