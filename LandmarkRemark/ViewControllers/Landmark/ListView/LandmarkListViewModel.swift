@@ -19,3 +19,22 @@ class LandmarkListViewModel {
         })
     }
 }
+
+
+// MARK: - Table View logic
+extension LandmarkListViewModel {
+    func cellViewModel(at indexPath: IndexPath) -> NoteCellViewModel? {
+        guard indexPath.row < noteCellViewModels.count else {
+            return nil
+        }
+        return noteCellViewModels[indexPath.row]
+    }
+    
+    var numberOfSections: Int {
+        return 1
+    }
+    
+    func numberOfRows(inSection section: Int) -> Int {
+        return noteCellViewModels.count
+    }
+}
