@@ -98,7 +98,6 @@ class ComposeNewNoteViewModelTests: BaseTestCase {
         
         let publishExpectation = XCTestExpectation(description: "Waiting for publish to complete.")
         let message = "This is a test message"
-        var dbRef: DatabaseReference!
         var resultingError: Error!
         vm.publishNewNote(message) { (ref, error) in
             if ref != nil {
