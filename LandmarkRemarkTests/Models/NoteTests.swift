@@ -54,6 +54,5 @@ class NoteTests: BaseTestCase {
         let dict = note.toDictionary()
         XCTAssertNotNil(dict)
         XCTAssertEqual(dict as NSDictionary, expected as NSDictionary)
-        
     }
 }

@@ -11,6 +11,7 @@ import Firebase
 import CoreLocation
 
 struct Note {
+    static let databaseName = "notes"
     
     let ref: DatabaseReference?
     let uid: String
