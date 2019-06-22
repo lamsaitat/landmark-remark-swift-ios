@@ -1,5 +1,5 @@
 //
-//  ComposeNewNoteViewController.swift
+//  ComposeNewNoteViewControllerTests.swift
 //  LandmarkRemarkTests
 //
 //  Created by Sai Tat Lam on 21/6/19.
