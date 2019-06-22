@@ -25,6 +25,22 @@ class LandmarkViewController: UIViewController {
     var mapViewController: LandmarkMapViewController!
     var listViewController: LandmarkListViewController!
     
+    var notes: [Note]! = [Note]() {
+        didSet {
+            if let listVc = listViewController {
+                listVc.viewModel = LandmarkListViewModel(with: notes)
+            }
+        }
+    }
+    let ref = Database.database().reference(withPath: Note.databaseName)
+    var dbHandle: DatabaseHandle?
+    
+    deinit {
+        if let dbHandle = dbHandle {
+            ref.removeObserver(withHandle: dbHandle)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +50,15 @@ class LandmarkViewController: UIViewController {
             self.mapViewController = mapViewController
         }
         embed(childViewController: mapViewController)
+        
+        dbHandle = ref.observe(.value) { [weak self] data in
+            self?.notes = data.children.allObjects.compactMap({ [weak self] dataSnapshot -> Note? in
+                guard let dataSnapshot = dataSnapshot as? DataSnapshot else {
+                    return nil
+                }
+                return Note(snapshot: dataSnapshot)
+            })
+        }
     }
 
     // MARK: - Navigation
@@ -64,11 +89,13 @@ extension LandmarkViewController {
         case .mapView:
             if mapViewController == nil {
                 mapViewController = createMapViewController()
+                
             }
             embed(childViewController: mapViewController)
         case .listView:
             if listViewController == nil {
                 listViewController = createListViewController()
+                listViewController.viewModel = LandmarkListViewModel(with: notes)
             }
             embed(childViewController: listViewController)
         }
