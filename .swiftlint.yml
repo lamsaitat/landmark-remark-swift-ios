@@ -12,7 +12,8 @@ type_name:
   min_length: 3
   max_length: 30
   excluded:
-  - ComposeNewNoteViewControllerTests  
+  - ComposeNewNoteViewControllerTests
+  - LandmarkListViewControllerTests
 
 identifier_name:
   min_length: 2

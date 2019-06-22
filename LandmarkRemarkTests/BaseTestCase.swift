@@ -46,6 +46,13 @@ class BaseTestCase: XCTestCase {
         return vc
     }
     
+    func createLandmarkListViewController() -> LandmarkListViewController {
+        guard let vc = mainStoryboard.instantiateViewController(withIdentifier: "LandmarkListViewController") as? LandmarkListViewController else {
+            fatalError("Unable to create LandmarkListViewController from storyboard.")
+        }
+        return vc
+    }
+    
     func createComposeNewNoteViewController() -> ComposeNewNoteViewController {
         guard let vc = mainStoryboard.instantiateViewController(withIdentifier: "ComposeNewNoteViewController") as? ComposeNewNoteViewController else {
             fatalError("Unable to create ComposeNewNoteViewController from storyboard.")
