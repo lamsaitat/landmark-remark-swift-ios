@@ -29,4 +29,31 @@ class NoteTests: BaseTestCase {
         XCTAssertEqual(note.authorUid, userId)
         XCTAssertEqual(note.authorDisplayName, username)
     }
+    
+    /**
+     Test that the toDictionary() function will write essential properties to dictionary correctly.
+     */
+    func testArchivingToDictionary() {
+        let latitude = Double(-33.8670864)
+        let longitude = Double(151.2077854)
+        let message = "This is a short message"
+        let userId = "590fc88a-80ac-40b2-be05-77d4479cb3f4"
+        let username = "Testuser001"
+        
+        let expected: [AnyHashable: Any] = [
+            "coordinate": [
+                "latitude": latitude,
+                "longitude": longitude
+            ],
+            "message": message,
+            "authorUid": userId,
+            "authorDisplayName": username
+            ]
+        
+        let note = Note(latitude: latitude, longitude: longitude, message: message, authorUid: userId, authorDisplayName: username)
+        let dict = note.toDictionary()
+        XCTAssertNotNil(dict)
+        XCTAssertEqual(dict as NSDictionary, expected as NSDictionary)
+        
+    }
 }
