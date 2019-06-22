@@ -18,5 +18,5 @@ type_name:
 identifier_name:
   min_length: 2
   max_length: 30
-  # excluded: # Consent to ignore specific variable. eg: LayoutConstraints
-  #  - thumbnailLeadingSpaceConstraint
+  excluded: # Consent to ignore specific variable. eg: LayoutConstraints
+  - annotationSubtitleDisplayString

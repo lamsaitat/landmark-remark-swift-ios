@@ -30,6 +30,10 @@
 		CBABD28422BE1F8300FF261D /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABD28322BE1F8300FF261D /* NoteCell.swift */; };
 		CBABD28622BE204000FF261D /* NoteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABD28522BE204000FF261D /* NoteCellViewModel.swift */; };
 		CBABD28822BE20A000FF261D /* NoteCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABD28722BE20A000FF261D /* NoteCellViewModelTests.swift */; };
+		CBABD28A22BE66A600FF261D /* LandmarkMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABD28922BE66A600FF261D /* LandmarkMapViewModel.swift */; };
+		CBABD28E22BE670800FF261D /* NoteAnnotationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABD28D22BE670800FF261D /* NoteAnnotationViewModel.swift */; };
+		CBABD29022BE67AF00FF261D /* LandmarkViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABD28F22BE67AF00FF261D /* LandmarkViewModelTests.swift */; };
+		CBABD29222BE6A1B00FF261D /* NoteAnnotationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABD29122BE6A1B00FF261D /* NoteAnnotationViewModelTests.swift */; };
 		CBCE1B6322BC908600B2F881 /* LandmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE1B6222BC908600B2F881 /* LandmarkViewController.swift */; };
 		CBCE1B6522BC909900B2F881 /* LandmarkViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE1B6422BC909900B2F881 /* LandmarkViewControllerTests.swift */; };
 		CBD2D13322BC9F050031586E /* LandmarkMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2D13222BC9F050031586E /* LandmarkMapViewController.swift */; };
@@ -97,6 +101,10 @@
 		CBABD28322BE1F8300FF261D /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		CBABD28522BE204000FF261D /* NoteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCellViewModel.swift; sourceTree = "<group>"; };
 		CBABD28722BE20A000FF261D /* NoteCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCellViewModelTests.swift; sourceTree = "<group>"; };
+		CBABD28922BE66A600FF261D /* LandmarkMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkMapViewModel.swift; sourceTree = "<group>"; };
+		CBABD28D22BE670800FF261D /* NoteAnnotationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteAnnotationViewModel.swift; sourceTree = "<group>"; };
+		CBABD28F22BE67AF00FF261D /* LandmarkViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkViewModelTests.swift; sourceTree = "<group>"; };
+		CBABD29122BE6A1B00FF261D /* NoteAnnotationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteAnnotationViewModelTests.swift; sourceTree = "<group>"; };
 		CBCE1B6222BC908600B2F881 /* LandmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkViewController.swift; sourceTree = "<group>"; };
 		CBCE1B6422BC909900B2F881 /* LandmarkViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkViewControllerTests.swift; sourceTree = "<group>"; };
 		CBD2D13222BC9F050031586E /* LandmarkMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkMapViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +254,8 @@
 			isa = PBXGroup;
 			children = (
 				CBD2D13622BCA1960031586E /* LandmarkMapViewControllerTests.swift */,
+				CBABD28F22BE67AF00FF261D /* LandmarkViewModelTests.swift */,
+				CBABD29122BE6A1B00FF261D /* NoteAnnotationViewModelTests.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -254,6 +264,8 @@
 			isa = PBXGroup;
 			children = (
 				CBD2D13222BC9F050031586E /* LandmarkMapViewController.swift */,
+				CBABD28922BE66A600FF261D /* LandmarkMapViewModel.swift */,
+				CBABD28D22BE670800FF261D /* NoteAnnotationViewModel.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -679,11 +691,13 @@
 			files = (
 				CBCE1B6322BC908600B2F881 /* LandmarkViewController.swift in Sources */,
 				CB1B724A22BBB4C100B8542A /* SignupViewModel.swift in Sources */,
+				CBABD28E22BE670800FF261D /* NoteAnnotationViewModel.swift in Sources */,
 				CB1B724F22BBBB1200B8542A /* UITextField+extensions.swift in Sources */,
 				CB1B723C22BB086100B8542A /* LoginViewModel.swift in Sources */,
 				CBABD28622BE204000FF261D /* NoteCellViewModel.swift in Sources */,
 				CBABD28022BE137400FF261D /* LandmarkListViewModel.swift in Sources */,
 				CBF97D3622BA00BE00032EC8 /* LoginViewController.swift in Sources */,
+				CBABD28A22BE66A600FF261D /* LandmarkMapViewModel.swift in Sources */,
 				CB1B724422BB2DAA00B8542A /* SignupViewController.swift in Sources */,
 				CBABD27922BE100200FF261D /* LandmarkListViewController.swift in Sources */,
 				CB63E71422BD16CE006F054E /* ComposeNewNoteViewModel.swift in Sources */,
@@ -700,6 +714,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBABD29022BE67AF00FF261D /* LandmarkViewModelTests.swift in Sources */,
 				CBCE1B6522BC909900B2F881 /* LandmarkViewControllerTests.swift in Sources */,
 				CB63E71722BD16EA006F054E /* ComposeNewNoteViewModelTests.swift in Sources */,
 				CB1B723E22BB087B00B8542A /* LoginViewModelTests.swift in Sources */,
@@ -712,6 +727,7 @@
 				CBF97D3022B9FDE200032EC8 /* UserTests.swift in Sources */,
 				CB8E0F1722BBC2B800BBB681 /* UITextFieldExtensionTests.swift in Sources */,
 				CBD2D13722BCA1960031586E /* LandmarkMapViewControllerTests.swift in Sources */,
+				CBABD29222BE6A1B00FF261D /* NoteAnnotationViewModelTests.swift in Sources */,
 				CBABD27C22BE102200FF261D /* LandmarkListViewControllerTests.swift in Sources */,
 				CB1B724622BB2E5300B8542A /* SignupViewControllerTests.swift in Sources */,
 				CB1B724822BB396800B8542A /* BaseTestCase.swift in Sources */,
