@@ -12,19 +12,25 @@ import CoreLocation
 
 class LandmarkViewController: UIViewController {
     
+    fileprivate enum ContentViewSegementIndex: Int {
+        case mapView = 0
+        case listView = 1
+    }
+    
     @IBOutlet weak var logoutButtonItem: UIBarButtonItem!
     @IBOutlet weak var contentViewSegmentedControl: UISegmentedControl!
     @IBOutlet weak var contentView: UIView!
     
     let locationManager = CLLocationManager()
     var mapViewController: LandmarkMapViewController!
+    var listViewController: LandmarkListViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.requestWhenInUseAuthorization()
         
-        if let mapViewController = storyboard?.instantiateViewController(withIdentifier: "LandmarkMapViewController") as? LandmarkMapViewController {
+        if let mapViewController = createMapViewController() {
             self.mapViewController = mapViewController
         }
         embed(childViewController: mapViewController)
@@ -36,7 +42,6 @@ class LandmarkViewController: UIViewController {
             vc.coordinate = location.coordinate
         }
     }
- 
 }
 
 
@@ -49,6 +54,25 @@ extension LandmarkViewController {
             debugPrint("Error signing out: \(error.localizedDescription)")
         }
     }
+    
+    @IBAction func contentViewSegmentedControlValueChanged(_ sender: UISegmentedControl) {
+        guard let index = ContentViewSegementIndex(rawValue: sender.selectedSegmentIndex) else {
+            fatalError("Unknown contentView segment index detected.")
+        }
+        
+        switch index {
+        case .mapView:
+            if mapViewController == nil {
+                mapViewController = createMapViewController()
+            }
+            embed(childViewController: mapViewController)
+        case .listView:
+            if listViewController == nil {
+                listViewController = createListViewController()
+            }
+            embed(childViewController: listViewController)
+        }
+    }
 }
 
 
@@ -58,7 +82,21 @@ extension LandmarkViewController {
             debugPrint("WARNING: Views not available for embedding.")
             return
         }
+        // Detach current content view.
+        if let viewToDetach = contentView.subviews.first {
+            let previouslyEmbeddedChild = children.filter { childVc -> Bool in
+                return childVc.view == viewToDetach
+            }.first
+            if let previouslyEmbeddedChild = previouslyEmbeddedChild {
+                previouslyEmbeddedChild.willMove(toParent: nil)
+                viewToDetach.removeFromSuperview()
+                previouslyEmbeddedChild.removeFromParent()
+                previouslyEmbeddedChild.didMove(toParent: nil)
+            }
+        }
+        
         if children.contains(child) == false {
+            child.willMove(toParent: self)
             addChild(child)
         }
         contentView.addSubview(child.view)
@@ -68,5 +106,13 @@ extension LandmarkViewController {
             NSLayoutConstraint(item: contentView, attribute: .leading, relatedBy: .equal, toItem: childView, attribute: .leading, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: contentView, attribute: .trailing, relatedBy: .equal, toItem: childView, attribute: .trailing, multiplier: 1.0, constant: 0)
         ])
+        child.didMove(toParent: self)
+    }
+    
+    func createMapViewController() -> LandmarkMapViewController! {
+        return storyboard?.instantiateViewController(withIdentifier: "LandmarkMapViewController") as? LandmarkMapViewController
+    }
+    func createListViewController() -> LandmarkListViewController! {
+        return storyboard?.instantiateViewController(withIdentifier: "LandmarkListViewController") as? LandmarkListViewController
     }
 }

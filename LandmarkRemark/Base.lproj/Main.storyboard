@@ -241,6 +241,9 @@
                                 <segment title="Map View"/>
                                 <segment title="List View"/>
                             </segments>
+                            <connections>
+                                <action selector="contentViewSegmentedControlValueChanged:" destination="XbR-z1-btr" eventType="valueChanged" id="8uU-0B-PXZ"/>
+                            </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="7kJ-Oa-5qX">
                             <connections>

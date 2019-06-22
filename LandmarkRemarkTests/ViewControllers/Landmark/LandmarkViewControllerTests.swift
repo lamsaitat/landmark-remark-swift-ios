@@ -16,6 +16,7 @@ class LandmarkViewControllerTests: BaseTestCase {
     override func setUp() {
         super.setUp()
         vc = createLandmarkViewController()
+        vc.loadViewIfNeeded()
     }
     
     override func tearDown() {
@@ -33,7 +34,6 @@ class LandmarkViewControllerTests: BaseTestCase {
         }
         let expectation = XCTestExpectation(description: "Wait for modal dismiss")
         let loginVc = createLoginViewController()
-        loginVc.loadViewIfNeeded()
         UIApplication.shared.keyWindow?.rootViewController = loginVc
         
         loginVc.present(navController, animated: true) {
@@ -47,5 +47,30 @@ class LandmarkViewControllerTests: BaseTestCase {
         XCTAssertNotEqual(UIApplication.shared.keyWindow?.rootViewController, vc.navigationController)
         XCTAssertNotNil(UIApplication.shared.keyWindow?.rootViewController as? LoginViewController)
         XCTAssertNil(Auth.auth().currentUser)
+    }
+    
+    func testSwitchingContentView() {
+        guard let navController = vc.navigationController, let vc = vc else {
+            return XCTFail("LandmarkViewController not available for testing.")
+        }
+        
+        UIApplication.shared.keyWindow?.rootViewController = navController
+        
+        // Switch to listView (1)
+        XCTAssertNil(vc.listViewController)
+        vc.contentViewSegmentedControl.selectedSegmentIndex = 1
+        vc.contentViewSegmentedControlValueChanged(vc.contentViewSegmentedControl)
+        XCTAssertNotNil(vc.listViewController)
+        XCTAssertEqual(vc.contentView, vc.listViewController.view.superview)
+        XCTAssertTrue(vc.children.contains(vc.listViewController))
+        XCTAssertFalse(vc.children.contains(vc.mapViewController))
+        
+        // Switch back to mapView (0)
+        vc.contentViewSegmentedControl.selectedSegmentIndex = 0
+        vc.contentViewSegmentedControlValueChanged(vc.contentViewSegmentedControl)
+        XCTAssertNotNil(vc.mapViewController)
+        XCTAssertEqual(vc.contentView, vc.mapViewController.view.superview)
+        XCTAssertTrue(vc.children.contains(vc.mapViewController))
+        XCTAssertFalse(vc.children.contains(vc.listViewController))
     }
 }
