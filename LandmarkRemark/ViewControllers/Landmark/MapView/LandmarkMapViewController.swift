@@ -13,7 +13,7 @@ class LandmarkMapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    private var hasInitialisedMap = false
+    private var hasZoomedToUserLocationOnce = false
 
     var viewModel: LandmarkMapViewModel = LandmarkMapViewModel(with: [Note]()) {
         didSet {
@@ -25,16 +25,19 @@ class LandmarkMapViewController: UIViewController {
 
 extension LandmarkMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        if hasInitialisedMap == false {
+        if hasZoomedToUserLocationOnce == false {
             mapView.showAnnotations([userLocation], animated: true)
-            hasInitialisedMap = true
+            hasZoomedToUserLocationOnce = true
         }
     }
     
     // MARK: Map Annotations.
     func reloadData() {
         // Remove existing annotations.
-        mapView.removeAnnotations(mapView.annotations)
+        let nonUserAnnotations = mapView.annotations.filter { annotation -> Bool in
+            return annotation is MKUserLocation == false
+        }
+        mapView.removeAnnotations(nonUserAnnotations)
         
         let annotations = viewModel.annotationViewModels.map { vm -> MKAnnotation in
             return vm.annotation

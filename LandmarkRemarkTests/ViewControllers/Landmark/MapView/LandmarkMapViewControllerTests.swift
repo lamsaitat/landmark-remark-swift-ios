@@ -30,7 +30,11 @@ class LandmarkMapViewControllerTests: BaseTestCase {
         guard let vc = vc, let mapView = vc.mapView else {
             return XCTFail("MapView not available to run the test.")
         }
-        XCTAssertTrue(mapView.annotations.isEmpty)
+
+        var nonUserAnnotations = mapView.annotations.filter { annotation -> Bool in
+            return annotation is MKUserLocation == false
+        }
+        XCTAssertTrue(nonUserAnnotations.isEmpty)
         
         var notes = [Note]()
         for idx in 0..<10 {
@@ -40,7 +44,11 @@ class LandmarkMapViewControllerTests: BaseTestCase {
         
         vc.viewModel = LandmarkMapViewModel(with: notes)
         vc.reloadData()
-        XCTAssertEqual(mapView.annotations.count, 10)
+        
+        nonUserAnnotations = mapView.annotations.filter { annotation -> Bool in
+            return annotation is MKUserLocation == false
+        }
+        XCTAssertEqual(nonUserAnnotations.count, 10)
         // Clean up
         mapView.removeAnnotations(mapView.annotations)
     }
@@ -52,7 +60,10 @@ class LandmarkMapViewControllerTests: BaseTestCase {
         guard let vc = vc, let mapView = vc.mapView else {
             return XCTFail("MapView not available to run the test.")
         }
-        XCTAssertTrue(mapView.annotations.isEmpty)
+        var nonUserAnnotations = mapView.annotations.filter { annotation -> Bool in
+            return annotation is MKUserLocation == false
+        }
+        XCTAssertTrue(nonUserAnnotations.isEmpty)
         
         var notes = [Note]()
         for idx in 0..<10 {
@@ -61,7 +72,11 @@ class LandmarkMapViewControllerTests: BaseTestCase {
         }
         
         vc.viewModel = LandmarkMapViewModel(with: notes)
-        XCTAssertEqual(mapView.annotations.count, 10)
+        
+        nonUserAnnotations = mapView.annotations.filter { annotation -> Bool in
+            return annotation is MKUserLocation == false
+        }
+        XCTAssertEqual(nonUserAnnotations.count, 10)
         // Clean up
         mapView.removeAnnotations(mapView.annotations)
     }
