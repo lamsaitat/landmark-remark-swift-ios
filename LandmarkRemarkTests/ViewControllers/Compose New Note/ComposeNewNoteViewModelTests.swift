@@ -67,14 +67,15 @@ class ComposeNewNoteViewModelTests: BaseTestCase {
             publishExpectation.fulfill()
         }
         wait(for: [publishExpectation], timeout: 10.0)
-        guard dbRef != nil else {
+        guard dbRef != nil, let key = dbRef.key else {
             return XCTFail("New note's database reference not found.")
         }
         
         // Step 3: Verify the new entry actually exists in the db.
         let queryExpectation = XCTestExpectation(description: "Waiting for db query to complete.")
         var resultingSnapshot: DataSnapshot!
-        dbRef.observeSingleEvent(of: .value) { snapshot in
+        let noteRef = Database.database().reference(withPath: Note.databaseName).child(key)
+        noteRef.observeSingleEvent(of: .value) { snapshot in
             resultingSnapshot = snapshot
             queryExpectation.fulfill()
         }
@@ -88,7 +89,7 @@ class ComposeNewNoteViewModelTests: BaseTestCase {
         XCTAssertEqual(dict["authorUid"] as? String, Auth.auth().currentUser!.uid)
         
         // Clean up.
-        dbRef.removeValue()
+        noteRef.removeValue()
         try? Auth.auth().signOut()
     }
     

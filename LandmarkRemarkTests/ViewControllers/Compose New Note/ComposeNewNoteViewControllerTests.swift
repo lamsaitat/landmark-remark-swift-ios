@@ -140,7 +140,7 @@ class ComposeNewNoteViewControllerTests: BaseTestCase {
         landmarkNavController.pushViewController(vc, animated: false)
         let expectation = XCTestExpectation(description: "Waiting for publish to complete.")
         var resultingSnapshot: DataSnapshot!
-        Database.database().reference(withPath: Note.databaseName).queryEqual(toValue: message, childKey: "message").observe(.value) { snapshot in
+        Database.database().reference(withPath: Note.databaseName).queryOrdered(byChild: "message").queryEqual(toValue: message).observe(.value) { snapshot in
             resultingSnapshot = snapshot
             // Adds a delay to allow for navigation animation.
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
@@ -154,9 +154,13 @@ class ComposeNewNoteViewControllerTests: BaseTestCase {
         
         // Test the compose vc has been popped off the navigation stack.
         XCTAssertNotEqual(navController.topViewController, vc)
-        
+
         // Clean up.
-        resultingSnapshot.ref.removeValue()
+        for child in resultingSnapshot.children {
+            if let child = child as? DataSnapshot {
+                child.ref.removeValue()
+            }
+        }
         try? Auth.auth().signOut()
     }
 }
