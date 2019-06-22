@@ -30,6 +30,9 @@ class LandmarkViewController: UIViewController {
             if let listVc = listViewController {
                 listVc.viewModel = LandmarkListViewModel(with: notes)
             }
+            if let mapVc = mapViewController {
+                mapVc.viewModel = LandmarkMapViewModel(with: notes)
+            }
         }
     }
     let ref = Database.database().reference(withPath: Note.databaseName)
