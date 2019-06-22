@@ -31,5 +31,16 @@ class UserTests: XCTestCase {
         XCTAssertEqual(user.username, username)
         XCTAssertEqual(user.email, email)
     }
-
+    
+    func testUserInstantiationWithoutEmail() {
+        let uid = "590fc88a-80ac-40b2-be05-77d4479cb3f4"
+        let username = "Testuser001"
+        
+        let user = User(uid: uid, email: nil, username: username)
+        
+        XCTAssertNotNil(user)
+        XCTAssertEqual(user.uid, uid)
+        XCTAssertEqual(user.username, username)
+        XCTAssertNil(user.email)
+    }
 }
