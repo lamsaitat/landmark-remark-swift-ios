@@ -195,8 +195,7 @@
 			children = (
 				CBD2D13422BCA06F0031586E /* Login */,
 				CBD2D13522BCA0780031586E /* Signup */,
-				CBCE1B6422BC909900B2F881 /* LandmarkViewControllerTests.swift */,
-				CBD2D13622BCA1960031586E /* LandmarkMapViewControllerTests.swift */,
+				CBABD27422BE0F9900FF261D /* Landmark */,
 				CB63E71522BD16D5006F054E /* Compose New Note */,
 			);
 			path = ViewControllers;
@@ -219,11 +218,36 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		CBABD27422BE0F9900FF261D /* Landmark */ = {
+			isa = PBXGroup;
+			children = (
+				CBCE1B6422BC909900B2F881 /* LandmarkViewControllerTests.swift */,
+				CBABD27522BE0FA500FF261D /* MapView */,
+			);
+			path = Landmark;
+			sourceTree = "<group>";
+		};
+		CBABD27522BE0FA500FF261D /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				CBD2D13622BCA1960031586E /* LandmarkMapViewControllerTests.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
+		CBABD27622BE0FB400FF261D /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				CBD2D13222BC9F050031586E /* LandmarkMapViewController.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
 		CBCE1B6622BC91E800B2F881 /* Landmark */ = {
 			isa = PBXGroup;
 			children = (
 				CBCE1B6222BC908600B2F881 /* LandmarkViewController.swift */,
-				CBD2D13222BC9F050031586E /* LandmarkMapViewController.swift */,
+				CBABD27622BE0FB400FF261D /* MapView */,
 				CB63E71222BD16B7006F054E /* Compose New Note */,
 			);
 			path = Landmark;
