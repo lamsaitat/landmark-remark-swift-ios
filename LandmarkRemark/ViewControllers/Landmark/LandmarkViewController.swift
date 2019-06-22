@@ -52,7 +52,7 @@ class LandmarkViewController: UIViewController {
         embed(childViewController: mapViewController)
         
         dbHandle = ref.observe(.value) { [weak self] data in
-            self?.notes = data.children.allObjects.compactMap({ [weak self] dataSnapshot -> Note? in
+            self?.notes = data.children.allObjects.compactMap({ dataSnapshot -> Note? in
                 guard let dataSnapshot = dataSnapshot as? DataSnapshot else {
                     return nil
                 }
