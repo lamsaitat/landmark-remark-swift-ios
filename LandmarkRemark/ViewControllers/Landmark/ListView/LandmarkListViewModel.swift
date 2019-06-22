@@ -10,20 +10,12 @@ import Foundation
 import Firebase
 
 class LandmarkListViewModel {
-    var notes = [Note]()
+    let noteCellViewModels: [NoteCellViewModel]
     let ref = Database.database().reference(withPath: Note.databaseName)
     
-    var notesDidRefreshBlock: (([Note]) -> Void)?
-    
-    init() {
-        ref.observe(.value) { [weak self] snapshot in
-            self?.notes = snapshot.children.allObjects.compactMap({ child -> Note? in
-                guard let child = child as? DataSnapshot else {
-                    return nil
-                }
-                return Note(snapshot: child)
-            })
-            self?.notesDidRefreshBlock?(self?.notes ?? [Note]())
-        }
+    required init(with notes: [Note]) {
+        noteCellViewModels = notes.map({ note -> NoteCellViewModel in
+            return NoteCellViewModel(with: note)
+        })
     }
 }

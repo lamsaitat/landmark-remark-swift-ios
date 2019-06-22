@@ -13,7 +13,7 @@ class LandmarkListViewModelTests: BaseTestCase {
     var vm: LandmarkListViewModel!
     
     override func setUp() {
-        vm = LandmarkListViewModel()
+        vm = LandmarkListViewModel(with: [sampleNote])
     }
 
     override func tearDown() {
@@ -21,7 +21,7 @@ class LandmarkListViewModelTests: BaseTestCase {
     }
 
     func testInstantiation() {
-        XCTAssertNotNil(vm.notes)
+        XCTAssertNotNil(vm.noteCellViewModels)
+        XCTAssertEqual(vm.noteCellViewModels.count, 1)
     }
-
 }
