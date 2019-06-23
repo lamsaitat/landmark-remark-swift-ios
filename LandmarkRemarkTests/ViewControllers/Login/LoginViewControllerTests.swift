@@ -138,7 +138,9 @@ class LoginViewControllerTests: BaseTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10)
-        XCTAssertEqual(alert.presentingViewController, vc.navigationController)
+        XCTAssertNotNil(alert.presentingViewController)
+        XCTAssertEqual(vc.presentedViewController, alert)
+        XCTAssertEqual(alert.presentingViewController, vc)
         XCTAssertEqual(alert.title, "Sorry")
         XCTAssertEqual(alert.message, "Unable to login.\nError: This is an error")
     }

@@ -73,7 +73,9 @@ extension LoginViewController {
     func performLogin(with auth: AuthCredential) {
         viewModel.performLogin(withCredential: auth) { [weak self] _, error in
             if let error = error {
-                _ = self?.presentLoginErrorAlert(with: error)
+                DispatchQueue.main.async {
+                    _ = self?.presentLoginErrorAlert(with: error)
+                }
                 return
             }
         }
@@ -82,6 +84,7 @@ extension LoginViewController {
     func presentLoginErrorAlert(with error: Error) -> UIAlertController {
         let alert = UIAlertController(title: "Sorry", message: "Unable to login.\nError: \(error.localizedDescription)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+        present(alert, animated: true, completion: nil)
         return alert
     }
 }
