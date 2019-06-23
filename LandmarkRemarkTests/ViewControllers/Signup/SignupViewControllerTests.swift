@@ -154,4 +154,24 @@ class SignupViewControllerTests: BaseTestCase {
         XCTAssertEqual(alert.title, "Sorry")
         XCTAssertEqual(alert.message, "Unable to complete sign up.\nError: This is an error")
     }
+    
+    func testPresentLoadingAlert() {
+        guard let vc = vc else {
+            return XCTFail("SignupViewController instance not available for testing.")
+        }
+        UIApplication.shared.keyWindow?.rootViewController = vc.navigationController
+        
+        let expectation = XCTestExpectation(description: "Wait for alert to present.")
+        let title = "Signup up now..."
+        let subtitle = "This should not take long."
+        let alert = vc.presentLoadingAlert(withTitle: title, subTitle: subtitle)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10)
+        XCTAssertNotNil(alert)
+        XCTAssertNotNil(alert.presentingViewController)
+        XCTAssertEqual(alert.presentingViewController, vc.navigationController)
+        XCTAssertEqual(alert, vc.presentedViewController)
+    }
 }

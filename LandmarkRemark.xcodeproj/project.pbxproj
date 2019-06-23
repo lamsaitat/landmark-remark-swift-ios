@@ -18,6 +18,8 @@
 		CB1B724F22BBBB1200B8542A /* UITextField+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1B724E22BBBB1200B8542A /* UITextField+extensions.swift */; };
 		CB1F940822BEFD9E00256409 /* NoteAnnotationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F940722BEFD9E00256409 /* NoteAnnotationTests.swift */; };
 		CB1F940C22BEFDCC00256409 /* NoteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F940B22BEFDCC00256409 /* NoteAnnotation.swift */; };
+		CB1F941322BF3AE800256409 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F941222BF3AE800256409 /* UIViewController+Extension.swift */; };
+		CB1F941522BF3B7100256409 /* UIViewControllerLoadingAlertExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F941422BF3B7100256409 /* UIViewControllerLoadingAlertExtensionTests.swift */; };
 		CB63E70F22BCD8F9006F054E /* ComposeNewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB63E70E22BCD8F9006F054E /* ComposeNewNoteViewController.swift */; };
 		CB63E71122BCD92F006F054E /* ComposeNewNoteViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB63E71022BCD92F006F054E /* ComposeNewNoteViewControllerTests.swift */; };
 		CB63E71422BD16CE006F054E /* ComposeNewNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB63E71322BD16CE006F054E /* ComposeNewNoteViewModel.swift */; };
@@ -89,6 +91,8 @@
 		CB1B724E22BBBB1200B8542A /* UITextField+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITextField+extensions.swift"; path = "../UITextField+extensions.swift"; sourceTree = "<group>"; };
 		CB1F940722BEFD9E00256409 /* NoteAnnotationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteAnnotationTests.swift; sourceTree = "<group>"; };
 		CB1F940B22BEFDCC00256409 /* NoteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteAnnotation.swift; sourceTree = "<group>"; };
+		CB1F941222BF3AE800256409 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		CB1F941422BF3B7100256409 /* UIViewControllerLoadingAlertExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerLoadingAlertExtensionTests.swift; sourceTree = "<group>"; };
 		CB63E70E22BCD8F9006F054E /* ComposeNewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeNewNoteViewController.swift; sourceTree = "<group>"; };
 		CB63E71022BCD92F006F054E /* ComposeNewNoteViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeNewNoteViewControllerTests.swift; sourceTree = "<group>"; };
 		CB63E71322BD16CE006F054E /* ComposeNewNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeNewNoteViewModel.swift; sourceTree = "<group>"; };
@@ -190,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				CB1B724E22BBBB1200B8542A /* UITextField+extensions.swift */,
+				CB1F941222BF3AE800256409 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				CB8E0F1622BBC2B800BBB681 /* UITextFieldExtensionTests.swift */,
+				CB1F941422BF3B7100256409 /* UIViewControllerLoadingAlertExtensionTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -697,6 +703,7 @@
 				CB1B723C22BB086100B8542A /* LoginViewModel.swift in Sources */,
 				CBABD28622BE204000FF261D /* NoteCellViewModel.swift in Sources */,
 				CBABD28022BE137400FF261D /* LandmarkListViewModel.swift in Sources */,
+				CB1F941322BF3AE800256409 /* UIViewController+Extension.swift in Sources */,
 				CBF97D3622BA00BE00032EC8 /* LoginViewController.swift in Sources */,
 				CBABD28A22BE66A600FF261D /* LandmarkMapViewModel.swift in Sources */,
 				CB1B724422BB2DAA00B8542A /* SignupViewController.swift in Sources */,
@@ -724,6 +731,7 @@
 				CBABD28822BE20A000FF261D /* NoteCellViewModelTests.swift in Sources */,
 				CB1B724C22BBB4DE00B8542A /* SignupViewModelTests.swift in Sources */,
 				CBABD27E22BE134900FF261D /* LandmarkListViewModelTests.swift in Sources */,
+				CB1F941522BF3B7100256409 /* UIViewControllerLoadingAlertExtensionTests.swift in Sources */,
 				CB63E71122BCD92F006F054E /* ComposeNewNoteViewControllerTests.swift in Sources */,
 				CB8E0F1722BBC2B800BBB681 /* UITextFieldExtensionTests.swift in Sources */,
 				CBD2D13722BCA1960031586E /* LandmarkMapViewControllerTests.swift in Sources */,

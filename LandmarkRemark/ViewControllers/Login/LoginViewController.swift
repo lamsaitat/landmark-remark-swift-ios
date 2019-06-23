@@ -91,10 +91,4 @@ extension LoginViewController {
         present(alert, animated: true, completion: nil)
         return alert
     }
-    
-    func presentLoadingAlert(withTitle title: String?, subTitle subtitle: String?) -> UIAlertController {
-        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
-        present(alert, animated: true, completion: nil)
-        return alert
-    }
 }
