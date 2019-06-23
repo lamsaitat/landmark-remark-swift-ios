@@ -8,6 +8,8 @@
 
 import XCTest
 import CoreLocation
+import Firebase
+import MapKit
 @testable import LandmarkRemark
 
 class NoteAnnotationViewModelTests: BaseTestCase {
@@ -33,6 +35,34 @@ class NoteAnnotationViewModelTests: BaseTestCase {
     func testAnnotationCoordinate() {
         XCTAssertEqual(vm.annotationCoordinate.latitude, CLLocationDegrees(-33.8670864))
         XCTAssertEqual(vm.annotationCoordinate.longitude, CLLocationDegrees(151.2077854))
+    }
+    
+    func testAnnotationPinTintColor() {
+        let logoutExpectation = XCTestExpectation(description: "Waiting for logout to complete")
+        try? Auth.auth().signOut()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            logoutExpectation.fulfill()
+        }
+        wait(for: [logoutExpectation], timeout: 15.0)
+        
+        XCTAssertEqual(vm.annotationPinTintColor, MKPinAnnotationView.redPinColor())
+        
+        let loginExpectation = XCTestExpectation(description: "Wait for login.")
+        let email = "testuser1@example.com"
+        let password = "Th1s1sAWeakPassw0rd"
+        Auth.auth().signIn(withEmail: email, password: password) { (_, error) in
+            if let error = error {
+                fatalError("Unexpected error logging in: \(error.localizedDescription)")
+            }
+            loginExpectation.fulfill()
+        }
+        wait(for: [loginExpectation], timeout: 15.0)
+        
+        XCTAssertNotNil(Auth.auth().currentUser)
+        XCTAssertEqual(vm.annotationPinTintColor, MKPinAnnotationView.greenPinColor())
+        
+        // Clean up
+        try? Auth.auth().signOut()
     }
     
     func testAnnotation() {

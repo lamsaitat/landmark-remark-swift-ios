@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import MapKit
+import Firebase
 
 class NoteAnnotationViewModel {
     let note: Note
@@ -18,10 +19,11 @@ class NoteAnnotationViewModel {
     }
     
     lazy var annotation: MKAnnotation = {
-        let annotation = MKPointAnnotation()
+        let annotation = NoteAnnotation()
         annotation.title = annotationTitleDisplayString
         annotation.subtitle = annotationSubtitleDisplayString
         annotation.coordinate = annotationCoordinate
+        annotation.pinTintColor = annotationPinTintColor
         return annotation
     }()
 }
@@ -39,5 +41,12 @@ extension NoteAnnotationViewModel {
     
     var annotationCoordinate: CLLocationCoordinate2D {
         return note.coordinate
+    }
+    
+    var annotationPinTintColor: UIColor {
+        if let currentUser = Auth.auth().currentUser, note.authorUid == currentUser.uid {
+            return MKPinAnnotationView.greenPinColor()
+        }
+        return MKPinAnnotationView.redPinColor()
     }
 }

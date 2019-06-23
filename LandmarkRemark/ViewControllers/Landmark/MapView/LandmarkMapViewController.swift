@@ -46,17 +46,19 @@ extension LandmarkMapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let annotation = annotation as? MKPointAnnotation else {
+        guard let annotation = annotation as? NoteAnnotation else {
             return nil
         }
         
         let identifier = "NoteAnnotation"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
         
         if let annotationView = annotationView {
             annotationView.annotation = annotation
+            annotationView.pinTintColor = annotation.pinTintColor
         } else {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.pinTintColor = annotation.pinTintColor
             annotationView?.canShowCallout = true
         }
         

@@ -33,5 +33,4 @@ class LandmarkMapViewModelTests: BaseTestCase {
         XCTAssertNotNil(vm.annotationViewModels)
         XCTAssertEqual(vm.annotationViewModels.count, 10)
     }
-
 }

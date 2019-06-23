@@ -19,7 +19,7 @@ class BaseTestCase: XCTestCase {
     let wynyardCoord = CLLocationCoordinate2D(latitude: CLLocationDegrees(-33.8670864), longitude: CLLocationDegrees(151.2077854))
     
     var sampleNote: Note {
-        return Note(latitude: wynyardCoord.latitude, longitude: wynyardCoord.longitude, message: "This is a test message", authorUid: "sample-user-uid", authorDisplayName: "TestUser-001")
+        return Note(latitude: wynyardCoord.latitude, longitude: wynyardCoord.longitude, message: "This is a test message", authorUid: "kWuOt7MFQidXfx2xW2A949a5o7Y2", authorDisplayName: "TestUser-001")
     }
     
     func createLoginViewController() -> LoginViewController {

@@ -16,6 +16,8 @@
 		CB1B724A22BBB4C100B8542A /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1B724922BBB4C100B8542A /* SignupViewModel.swift */; };
 		CB1B724C22BBB4DE00B8542A /* SignupViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1B724B22BBB4DE00B8542A /* SignupViewModelTests.swift */; };
 		CB1B724F22BBBB1200B8542A /* UITextField+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1B724E22BBBB1200B8542A /* UITextField+extensions.swift */; };
+		CB1F940822BEFD9E00256409 /* NoteAnnotationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F940722BEFD9E00256409 /* NoteAnnotationTests.swift */; };
+		CB1F940C22BEFDCC00256409 /* NoteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F940B22BEFDCC00256409 /* NoteAnnotation.swift */; };
 		CB63E70F22BCD8F9006F054E /* ComposeNewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB63E70E22BCD8F9006F054E /* ComposeNewNoteViewController.swift */; };
 		CB63E71122BCD92F006F054E /* ComposeNewNoteViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB63E71022BCD92F006F054E /* ComposeNewNoteViewControllerTests.swift */; };
 		CB63E71422BD16CE006F054E /* ComposeNewNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB63E71322BD16CE006F054E /* ComposeNewNoteViewModel.swift */; };
@@ -87,6 +89,8 @@
 		CB1B724922BBB4C100B8542A /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		CB1B724B22BBB4DE00B8542A /* SignupViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModelTests.swift; sourceTree = "<group>"; };
 		CB1B724E22BBBB1200B8542A /* UITextField+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITextField+extensions.swift"; path = "../UITextField+extensions.swift"; sourceTree = "<group>"; };
+		CB1F940722BEFD9E00256409 /* NoteAnnotationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteAnnotationTests.swift; sourceTree = "<group>"; };
+		CB1F940B22BEFDCC00256409 /* NoteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteAnnotation.swift; sourceTree = "<group>"; };
 		CB63E70E22BCD8F9006F054E /* ComposeNewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeNewNoteViewController.swift; sourceTree = "<group>"; };
 		CB63E71022BCD92F006F054E /* ComposeNewNoteViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeNewNoteViewControllerTests.swift; sourceTree = "<group>"; };
 		CB63E71322BD16CE006F054E /* ComposeNewNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeNewNoteViewModel.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 				CBD2D13622BCA1960031586E /* LandmarkMapViewControllerTests.swift */,
 				CBABD28F22BE67AF00FF261D /* LandmarkMapViewModelTests.swift */,
 				CBABD29122BE6A1B00FF261D /* NoteAnnotationViewModelTests.swift */,
+				CB1F940722BEFD9E00256409 /* NoteAnnotationTests.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 				CBD2D13222BC9F050031586E /* LandmarkMapViewController.swift */,
 				CBABD28922BE66A600FF261D /* LandmarkMapViewModel.swift */,
 				CBABD28D22BE670800FF261D /* NoteAnnotationViewModel.swift */,
+				CB1F940B22BEFDCC00256409 /* NoteAnnotation.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -693,6 +699,7 @@
 				CB1B724A22BBB4C100B8542A /* SignupViewModel.swift in Sources */,
 				CBABD28E22BE670800FF261D /* NoteAnnotationViewModel.swift in Sources */,
 				CB1B724F22BBBB1200B8542A /* UITextField+extensions.swift in Sources */,
+				CB1F940C22BEFDCC00256409 /* NoteAnnotation.swift in Sources */,
 				CB1B723C22BB086100B8542A /* LoginViewModel.swift in Sources */,
 				CBABD28622BE204000FF261D /* NoteCellViewModel.swift in Sources */,
 				CBABD28022BE137400FF261D /* LandmarkListViewModel.swift in Sources */,
@@ -714,6 +721,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB1F940822BEFD9E00256409 /* NoteAnnotationTests.swift in Sources */,
 				CBABD29022BE67AF00FF261D /* LandmarkMapViewModelTests.swift in Sources */,
 				CBCE1B6522BC909900B2F881 /* LandmarkViewControllerTests.swift in Sources */,
 				CB63E71722BD16EA006F054E /* ComposeNewNoteViewModelTests.swift in Sources */,
