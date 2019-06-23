@@ -63,9 +63,13 @@ extension SignupViewController {
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         
+        let alert = presentLoadingAlert(withTitle: "Signing up now...", subTitle: nil)
         viewModel.performSignup(withEmail: email, password: password, username: username) { [weak self] (user, error) in
             guard let self = self else {
                 return
+            }
+            DispatchQueue.main.async {
+                alert.dismiss(animated: false, completion: nil)
             }
             if let error = error {
                 DispatchQueue.main.async {
