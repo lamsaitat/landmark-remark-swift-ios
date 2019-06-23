@@ -47,6 +47,7 @@ class LoginViewController: UIViewController {
 // MARK: - IBActions
 extension LoginViewController {
     @IBAction func loginButtonTouchUpInside(_ sender: UIButton) {
+        // Validates against email and password fields.
         guard let email = emailTextField.text, email.count > 0 else {
             emailTextField.markAsInvalid()
             emailTextField.becomeFirstResponder()
@@ -60,6 +61,7 @@ extension LoginViewController {
         }
         passwordTextField.markAsValid()
         
+        // Validation completes, dismisses keyboard and perform login.
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
 
@@ -82,6 +84,10 @@ extension LoginViewController {
                 }
                 return
             }
+            // Deliberately left blank.
+            // Upon successful login, Firebase emits a AuthStateDidChange to
+            // it's listener, which will handle the transition of app's root
+            // view controller else where.
         }
     }
     

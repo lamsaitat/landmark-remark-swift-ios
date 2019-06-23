@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         
+        // Adds a listener to handle the transition of app's root view controller
+        // based on auth state.
         Auth.auth().addStateDidChangeListener { (_, user) in
             self.applyRootViewController(for: user)
         }

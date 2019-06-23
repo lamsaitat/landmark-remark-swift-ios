@@ -20,12 +20,6 @@ class SignupViewController: UIViewController {
     var signupCompletionBlock: ((Firebase.User?, Firebase.AuthCredential) -> Void)?
     let viewModel = SignupViewModel()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         submitButton.layer.cornerRadius = 5.0
@@ -40,6 +34,7 @@ extension SignupViewController {
     }
     
     @IBAction func submitButtonTouchUpInside(_ sender: UIButton) {
+        // Validation against username, email, password fields.
         guard let username = usernameTextField.text, username.count > 0 else {
             usernameTextField.markAsInvalid()
             usernameTextField.becomeFirstResponder()
@@ -59,6 +54,7 @@ extension SignupViewController {
         }
         passwordTextField.markAsValid()
         
+        // Validation completes, dismisses keyboard and perform sign up.
         usernameTextField.resignFirstResponder()
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
@@ -78,6 +74,9 @@ extension SignupViewController {
                 return
             }
             if let user = user, let completion = self.signupCompletionBlock {
+                // Passing through an AuthCredential object is probably safer than
+                // just throwing plaintext passwords around, right?
+                // I'm hoping Firebase encrypts this under the hood...
                 let auth = EmailAuthProvider.credential(withEmail: email, password: password)
                 completion(user, auth)
             }
