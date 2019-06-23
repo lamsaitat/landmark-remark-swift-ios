@@ -313,11 +313,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search note or user" id="7Jj-hD-ssc">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            <connections>
+                                <outlet property="delegate" destination="r6m-a0-ujf" id="uhX-hN-nhn"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" rowHeight="96" id="mYj-4e-g2Y" customClass="NoteCell" customModule="LandmarkRemark" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="96"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mYj-4e-g2Y" id="M2T-2b-ijf">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mYj-4e-g2Y" id="M2T-2b-ijf">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="95.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -375,6 +383,9 @@
                             <outlet property="delegate" destination="r6m-a0-ujf" id="7Gh-yu-2u7"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="searchBar" destination="7Jj-hD-ssc" id="Gg8-ij-bSg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5d4-vu-dZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
