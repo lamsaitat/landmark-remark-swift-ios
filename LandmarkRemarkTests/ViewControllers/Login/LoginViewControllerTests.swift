@@ -145,6 +145,21 @@ class LoginViewControllerTests: BaseTestCase {
         XCTAssertEqual(alert.message, "Unable to login.\nError: This is an error")
     }
     
+    func testPresentLoadingAlert() {
+        let expectation = XCTestExpectation(description: "Wait for alert to present.")
+        let title = "Signing in..."
+        let subtitle = "This should not take long."
+        let alert = vc.presentLoadingAlert(withTitle: title, subTitle: subtitle)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 10)
+        XCTAssertNotNil(alert)
+        XCTAssertNotNil(alert.presentingViewController)
+        XCTAssertEqual(alert.presentingViewController, vc)
+        XCTAssertEqual(alert, vc.presentedViewController)
+    }
+    
     /**
      On successful login the view controller should present the landmark view
      controller via a navigation controller.

@@ -71,7 +71,11 @@ extension LoginViewController {
 // MARK: - public methods
 extension LoginViewController {
     func performLogin(with auth: AuthCredential) {
+        let alert = presentLoadingAlert(withTitle: "Logging in...", subTitle: nil)
         viewModel.performLogin(withCredential: auth) { [weak self] _, error in
+            DispatchQueue.main.async {
+                alert.dismiss(animated: false, completion: nil)
+            }
             if let error = error {
                 DispatchQueue.main.async {
                     _ = self?.presentLoginErrorAlert(with: error)
@@ -84,6 +88,12 @@ extension LoginViewController {
     func presentLoginErrorAlert(with error: Error) -> UIAlertController {
         let alert = UIAlertController(title: "Sorry", message: "Unable to login.\nError: \(error.localizedDescription)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+        present(alert, animated: true, completion: nil)
+        return alert
+    }
+    
+    func presentLoadingAlert(withTitle title: String?, subTitle subtitle: String?) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
         present(alert, animated: true, completion: nil)
         return alert
     }
