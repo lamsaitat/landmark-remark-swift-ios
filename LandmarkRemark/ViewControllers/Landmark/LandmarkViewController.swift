@@ -27,6 +27,7 @@ class LandmarkViewController: UIViewController {
     
     var notes: [Note]! = [Note]() {
         didSet {
+            // Updates the content view's data source (view models).
             if let listVc = listViewController {
                 listVc.viewModel = LandmarkListViewModel(with: notes)
             }
@@ -39,6 +40,7 @@ class LandmarkViewController: UIViewController {
     var dbHandle: DatabaseHandle?
     
     deinit {
+        // Removes database listener.
         if let dbHandle = dbHandle {
             ref.removeObserver(withHandle: dbHandle)
         }
@@ -47,6 +49,7 @@ class LandmarkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Asks for permission to get device location if hasn't been granted.
         locationManager.requestWhenInUseAuthorization()
         
         if let mapViewController = createMapViewController() {
@@ -54,6 +57,7 @@ class LandmarkViewController: UIViewController {
         }
         embed(childViewController: mapViewController)
         
+        // Adds a database listener to automatically sync the notes.
         dbHandle = ref.observe(.value) { [weak self] data in
             self?.notes = data.children.allObjects.compactMap({ dataSnapshot -> Note? in
                 guard let dataSnapshot = dataSnapshot as? DataSnapshot else {
@@ -125,6 +129,7 @@ extension LandmarkViewController {
             }
         }
         
+        // View constraints arithmetics.
         if children.contains(child) == false {
             child.willMove(toParent: self)
             addChild(child)

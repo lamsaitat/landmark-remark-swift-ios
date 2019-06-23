@@ -57,6 +57,8 @@ extension LandmarkListViewModel {
             filteredNoteCellViewModels = [NoteCellViewModel](noteCellViewModels)
             return
         }
+        
+        // Searchs in message or username.
         filteredNoteCellViewModels = noteCellViewModels.filter({ cvm -> Bool in
             return cvm.note.message.contains(searchText) || cvm.note.authorDisplayName.contains(searchText)
         })

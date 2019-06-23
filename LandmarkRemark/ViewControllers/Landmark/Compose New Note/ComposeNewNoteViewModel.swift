@@ -27,6 +27,7 @@ class ComposeNewNoteViewModel {
         
         let note = Note(latitude: coordinate.latitude, longitude: coordinate.longitude, message: message, authorUid: user.uid, authorDisplayName: user.displayName ?? "")
         
+        // Push to Database.
         Database.database().reference(withPath: Note.databaseName).childByAutoId().setValue(note.toDictionary() as Any) { (error, ref) in
             if let error = error {
                 completion?(nil, error)

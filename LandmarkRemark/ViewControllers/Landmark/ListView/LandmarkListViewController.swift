@@ -23,6 +23,7 @@ class LandmarkListViewController: UITableViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.rowHeight = UITableView.automaticDimension
         
+        // Taps to dismiss search keyboard.
         tableView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleViewTapped)))
     }
 
