@@ -31,7 +31,13 @@ class LoginViewController: UIViewController {
         
         if let navController = segue.destination as? UINavigationController, let vc = navController.viewControllers.first as? SignupViewController {
             vc.signupCompletionBlock = { [weak self] (user: Firebase.User?, auth: Firebase.AuthCredential?) in
-                guard let auth = auth else {
+                guard let auth = auth, let user = user else {
+                    let error = NSError(domain: Bundle.main.bundleIdentifier!, code: 500, userInfo: [
+                        NSLocalizedDescriptionKey: "An unknown error has occured."
+                    ])
+                    DispatchQueue.main.async {
+                        self?.presentLoginErrorAlert(with: error)
+                    }
                     return
                 }
                 DispatchQueue.main.async {
