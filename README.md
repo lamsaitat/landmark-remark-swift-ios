@@ -33,6 +33,7 @@ The application contains 2 entry points based on the login state:
 4. LandmarkListViewController - 1.5 Hour
 5. LandmarkListViewController (Search bar) 1 Hour
 6. Composing new note - 2 Hours
+
 Total: 12.5 man-Hours
 
 ## Implicit Requirements
